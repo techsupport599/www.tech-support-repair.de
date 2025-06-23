@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tech Support & Repair</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    header {
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+    nav a.active {
+      color: #007bff;
+      text-shadow: 1px 1px 1px #ccc;
+    }
+    .content {
+      display: none;
+      padding: 30px;
+      text-align: center;
+    }
+    .content.active {
+      display: block;
+    }
+    .email-button {
+      background-color: #ffd43b;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" onclick="showSection('startseite')" id="link-startseite">Startseite</a>
+      <a href="#" onclick="showSection('ueberuns')" id="link-ueberuns">über uns</a>
+      <a href="#" onclick="showSection('kontakt')" id="link-kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="startseite" class="content active">
+      <img src="1000025512.jpg" alt="Startseite">
+      <br>
+      <a class="email-button" href="mailto:techsupprt@gmx.de">email senden</a>
+    </section>
+
+    <section id="ueberuns" class="content">
+      <img src="1000025511.jpg" alt="Über uns">
+    </section>
+
+    <section id="kontakt" class="content">
+      <img src="1000025513.jpg" alt="Kontakt">
+    </section>
+  </main>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+      document.getElementById('link-' + id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
