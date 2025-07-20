@@ -69,7 +69,22 @@
       max-width: 100%;
       height: auto;
     }
-  </style>
+    /* --- CSS für die Lampe --- */
+    .lampe {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 10;
+    }
+    .lampe img {
+      width: 50px;
+      transition: transform 0.3s ease;
+    }
+    .lampe.an img {
+      transform: rotate(180deg);
+    }
+  </style> 
 </head>
 <body>
   <header>
@@ -84,6 +99,11 @@
   <main>
     <section id="startseite" class="content active">
       <img src="1000025512.jpg" alt="Startseite"
+
+         <div class="lampe" onclick="toggleLampe()">
+        <img src="URL_ZU_DEINEM_LAMPE-AUS-BILD.png" alt="Lampe aus">
+      </div>
+      
       <br>
       <a class="email-button" href="mailto:techsupprt@gmx.de">email senden</a>
       <a href="https://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button">YouTube Kanal</a>
@@ -112,6 +132,12 @@
       document.getElementById(id).classList.add('active');
       document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
       document.getElementById('link-' + id).classList.add('active');
+    }
+    
+     // --- JavaScript für die Lampe ---
+    function toggleLampe() {
+      const lampe = document.querySelector('.lampe');
+      lampe.classList.toggle('an');
     }
   </script>
 </body>
