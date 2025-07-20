@@ -9,44 +9,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
-
-    html
-<div class="lamp">
-  <svg viewBox="0 0 200 300" class="lamp__svg">
-    <!-- Lichtkegel -->
-    <polygon class="lamp__light" points="100,100 40,300 160,300" fill="#fff" opacity="0.3"/>
-    
-    <!-- Lampenschirm -->
-    <circle cx="100" cy="80" r="50" fill="green"/>
-    
-    <!-- Gesicht -->
-    <circle class="lamp__feature" cx="80" cy="75" r="5"/>
-    <circle class="lamp__feature" cx="120" cy="75" r="5"/>
-    <path class="lamp__mouth" d="M80,90 Q100,110 120,90" fill="black"/>
-    <circle class="lamp__tongue" cx="100" cy="105" r="5" fill="red"/>
-    
-    <!-- Körper -->
-    <rect x="95" y="130" width="10" height="100" fill="#ccc"/>
-    <circle cx="100" cy="230" r="20" fill="#ccc"/>
-    
-    <!-- Schnur -->
-    <line class="cord" x1="95" y1="80" x2="95" y2="130" stroke="white" stroke-width="2"/>
-  </svg>
-</div>
-
-      css
-/* TikTok "Meowish" */
-.lamp {
-  display: block;
-  height: 40vmin;
-  overflow: visible !important;
-}
-
-.lamp__tongue { fill: var(--tongue, red); }
-.lamp__hit { cursor: pointer; opacity: 0; }
-.lamp__feature { fill: var(--feature, black); }
-
-
+  
     header {
       background: #fff;
       display: flex;
