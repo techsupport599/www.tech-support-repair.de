@@ -9,7 +9,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
-  
+   
     header {
       background: #fff;
       display: flex;
@@ -51,17 +51,16 @@
       display: inline-block;
       margin-top: 20px;
     }
-    .YouTube-butten { 
+    .YouTube-button { 
       text-decoration: none;
-      backgraund-color: #ff0000;
-      coler: white;
+      background-color: #ff0000;
+      color: white;
       font-weight: bold;
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
-      text-decoration: none;
       display: inline-block;
       margin-top: 20px;
     }
@@ -69,7 +68,11 @@
       max-width: 100%;
       height: auto;
     }
-    /* --- CSS für die Lampe --- */
+    
+    #startseite {
+      position: relative;
+    }
+    
     .lampe {
       position: absolute;
       top: 20px;
@@ -77,14 +80,11 @@
       cursor: pointer;
       z-index: 10;
     }
-    .lampe img {
+    
+    .lampe-icon {
       width: 50px;
-      transition: transform 0.3s ease;
     }
-    .lampe.an img {
-      transform: rotate(180deg);
-    }
-  </style> 
+  </style>
 </head>
 <body>
   <header>
@@ -98,16 +98,16 @@
 
   <main>
     <section id="startseite" class="content active">
-      <img src="1000025512.jpg" alt="Startseite"
-
-         <div class="lampe" onclick="toggleLampe()">
-        <img src="URL_ZU_DEINEM_LAMPE-AUS-BILD.png" alt="Lampe aus">
+      <img src="1000025512.jpg" alt="Startseite">
+      
+      <div class="lampe" onclick="toggleLampe()">
+        <img id="lampe-icon" src="URL_ZUM_AUS-BILD.png" alt="Lampe">
       </div>
       
       <br>
       <a class="email-button" href="mailto:techsupprt@gmx.de">email senden</a>
-      <a href="https://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button">YouTube Kanal</a>
-      </section>
+      <a href="https://www.youtube.com/@TechSupport2live" target="_blank" class="YouTube-button">YouTube Kanal</a>
+    </section>
 
     <section id="ueberuns" class="content">
       <img src="1000025511.jpg" alt="Über uns">
@@ -116,15 +116,13 @@
     <section id="kontakt" class="content">
       <img src="1000025513.jpg" alt="Kontakt">
     </section>
-  </main>
 
- <section id="neuste-ankuenfte" class="content">
-   <h1 style="color:blue;text-align;: center;">Neuste Ankünfte</h1>
-   <body style="background-color: lightblue;">
-  <p style="font-size: 25px;"><br><br>Windows 11 Instailation auf Geräten die noch die vollen Mindestanforderungen erfüllen<br><br></p>
-  <p style="font-size: 25px;"><br><br>Komplette 2-in-1 PC Scan mit Beschädigter Datein Entfernung<br><br></p>
-</section>
-</main>
+    <section id="neuste-ankuenfte" class="content">
+      <h1 style="color:blue;text-align: center;">Neuste Ankünfte</h1>
+      <p style="font-size: 25px;"><br><br>Windows 11 Instailation auf Geräten die noch die vollen Mindestanforderungen erfüllen<br><br></p>
+      <p style="font-size: 25px;"><br><br>Komplette 2-in-1 PC Scan mit Beschädigter Datein Entfernung<br><br></p>
+    </section>
+  </main>
 
   <script>
     function showSection(id) {
@@ -133,11 +131,15 @@
       document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
       document.getElementById('link-' + id).classList.add('active');
     }
-    
-     // --- JavaScript für die Lampe ---
+
     function toggleLampe() {
-      const lampe = document.querySelector('.lampe');
-      lampe.classList.toggle('an');
+      const lampeIcon = document.getElementById('lampe-icon');
+      // Hier die genauen URLs der Bilder eingeben
+      if (lampeIcon.src.endsWith('URL_ZUM_AUS-BILD.png')) {
+        lampeIcon.src = 'URL_ZUM_AN-BILD.png';
+      } else {
+        lampeIcon.src = 'URL_ZUM_AUS-BILD.png';
+      }
     }
   </script>
 </body>
