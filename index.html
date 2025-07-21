@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tech Support & Repair</title>
+  <title>TECH SUPPORT & REPAIR</title>
   <style>
     body {
       margin: 0;
@@ -71,19 +71,8 @@
     
     #startseite {
       position: relative;
-    }
+      }
     
-    .lampe {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      cursor: pointer;
-      z-index: 10;
-    }
-    
-    .lampe-icon {
-      width: 30px;
-    }
   </style>
 </head>
 <body>
@@ -99,10 +88,6 @@
   <main>
     <section id="startseite" class="content active">
       <img src="1000025512.jpg" alt="Startseite">
-      
-      <div class="lampe" onclick="toggleLampe()">
-        <img id="lampe-icon" src="1000025515.jpg" alt="Lampe">
-      </div>
       
       <br>
       <a class="email-button" href="mailto:techsupprt@gmx.de">email senden</a>
@@ -130,16 +115,6 @@
       document.getElementById(id).classList.add('active');
       document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
       document.getElementById('link-' + id).classList.add('active');
-    }
-
-    function toggleLampe() {
-      const lampeIcon = document.getElementById('lampe-icon');
-      // Hier die genauen URLs der Bilder eingeben
-      if (lampeIcon.src.endsWith('1000025515.jpg')) {
-        lampeIcon.src = '1000025516.jpg';
-      } else {
-        lampeIcon.src = '1000025515.jpg';
-      }
     }
   </script>
 </body>
