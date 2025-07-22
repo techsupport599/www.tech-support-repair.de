@@ -64,15 +64,62 @@
       display: inline-block;
       margin-top: 20px;
     }
-    img {
-      max-width: 100%;
-      height: auto;
-    }
     
-    #startseite {
-      position: relative;
-      }
-    
+        /* Allgemeine Bildstile für Inhalte */
+        .content img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Stil für das Über uns Logo */
+        .ueber-uns-logo {
+            width: 200px; /* Standardgröße für größere Bildschirme */
+            float: right; /* Bild rechts vom Text floaten lassen */
+            margin-left: 20px; /* Abstand zum Text links */
+            margin-bottom: 20px; /* Abstand zum nachfolgenden Inhalt */
+        }
+
+        /* Media Queries für responsive Anpassungen */
+        /* Anpassungen für kleinere Bildschirme (z.B. Smartphones und Tablets) */
+        @media (max-width: 768px) {
+            nav a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            /* Anpassung für das Über uns Logo auf kleinen Bildschirmen */
+            .ueber-uns-logo {
+                float: none; /* Float aufheben, damit es nicht am Text klebt */
+                display: block; /* Als Block-Element anzeigen */
+                margin: 20px auto; /* Zentrieren und vertikalen Abstand hinzufügen */
+                width: 150px; /* Kleinere Größe auf Smartphones */
+            }
+
+            #ueberuns p {
+                font-size: 18px; /* Kleinere Schriftgröße für besseres Lesen */
+            }
+        }
+
+        /* Anpassungen für sehr kleine Bildschirme (z.B. ältere Smartphones) */
+        @media (max-width: 480px) {
+            nav a {
+                margin: 0 5px;
+                font-size: 0.8em;
+            }
+
+            .email-button, .YouTube-button {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+            .ueber-uns-logo {
+                width: 120px; /* Noch kleinere Größe */
+            }
+        }
   </style>
 </head>
 <body>
