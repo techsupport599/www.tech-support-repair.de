@@ -77,8 +77,12 @@
             float: right; /* Bild rechts vom Text floaten lassen */
             margin-left: 20px; /* Abstand zum Text links */
             margin-bottom: 20px; /* Abstand zum nachfolgenden Inhalt */
-        }
+         }
 
+        /* NEU: Bild nur auf PC anzeigen */
+        .nur-auf-pc {
+            display: none; /* Standardmäßig verstecken */
+        }
         /* Media Queries für responsive Anpassungen */
         /* Anpassungen für kleinere Bildschirme (z.B. Smartphones und Tablets) */
         @media (max-width: 768px) {
@@ -160,8 +164,8 @@
          Kooperation – gegenseitige Unterstützung und Förderung<br>
          sind Teil unserer gemeinsamen Vision.</p>
 
-           <img src="1000025517.jpg" alt="Über uns Bild" style="position: absolute; bottom: 70px; left: 30px; width: 200px;">
-    </section>
+      <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo">
+        </section>
 
     <section id="kontakt" class="content">
       <img src="1000025513.jpg" alt="Kontakt">
