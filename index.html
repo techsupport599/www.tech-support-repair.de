@@ -9,7 +9,7 @@
       margin: 0;
       font-family: Arial, sans-serif;
     }
-   
+    
     header {
       background: #fff;
       display: flex;
@@ -51,7 +51,7 @@
       display: inline-block;
       margin-top: 20px;
     }
-    .YouTube-button { 
+    .youtube-button { /* Name des Buttons korrigiert */
       text-decoration: none;
       background-color: #ff0000;
       color: white;
@@ -64,7 +64,7 @@
       display: inline-block;
       margin-top: 20px;
     }
-    .WhatsApp-button { 
+    .whatsapp-button { /* Name des Buttons korrigiert */
       text-decoration: none;
       background-color: green;
       color: white;
@@ -76,7 +76,7 @@
       cursor: pointer;
       display: inline-block;
       margin-top: 20px;
-    
+    }
         /* Allgemeine Bildstile für Inhalte */
         .content img {
             max-width: 100%;
@@ -89,12 +89,9 @@
             float: right; /* Bild rechts vom Text floaten lassen */
             margin-left: 20px; /* Abstand zum Text links */
             margin-bottom: 20px; /* Abstand zum nachfolgenden Inhalt */
-         }
-
-        /* NEU: Bild nur auf PC anzeigen */
-        .nur-auf-pc {
-            display: none; /* Standardmäßig verstecken */
         }
+
+        /* NEU: Bild nur auf PC anzeigen (wurde in den Medien-Queries behandelt) */
         /* Media Queries für responsive Anpassungen */
         /* Anpassungen für kleinere Bildschirme (z.B. Smartphones und Tablets) */
         @media (max-width: 768px) {
@@ -127,7 +124,7 @@
                 font-size: 0.8em;
             }
 
-            .email-button, .YouTube-button {
+            .email-button, .youtube-button, .whatsapp-button { /* alle Button-Klassen hier anpassen */
                 padding: 8px 15px;
                 font-size: 14px;
             }
@@ -142,54 +139,53 @@
   <header>
     <nav>
       <a href="#" onclick="showSection('startseite')" id="link-startseite">Startseite</a>
-      <a href="#" onclick="showSection('ueberuns')" id="link-ueberuns">über uns</a>
+      <a href="#" onclick="showSection('ueberuns')" id="link-ueberuns">Über uns</a>
       <a href="#" onclick="showSection('kontakt')" id="link-kontakt">Kontakt</a>
-      <a href="#" onclick="showSection('neuste-ankuenfte')" id="link-neuste-ankuenfte">neuste Ankünfte</a>
+      <a href="#" onclick="showSection('neuste-ankuenfte')" id="link-neuste-ankuenfte">Neuste Ankünfte</a>
     </nav>
   </header>
 
   <main>
     <section id="startseite" class="content active">
       <img src="1000025512.jpg" alt="Startseite">
-
-      <body style="background-color: lightblue;">
-        <h1>Herzlich Wilkommen🙌</h1>
-      </body>
+      <h1>Herzlich Willkommen🙌</h1>
       
       <br>
-      <a class="email-button" href="mailto:techsupprt@gmx.de">email senden</a>
-      <a href="https://www.youtube.com/@TechSupport2live" target="_blank" class="YouTube-button">TECH SUPPORT & REPAIR</a>
+      <a class="email-button" href="mailto:techsupprt@gmx.de">E-Mail senden</a>
+      <a href="https://www.youtube.com/@Trompeten_Cover" target="_blank" class="youtube-button">TECH SUPPORT & REPAIR YouTube</a>
     </section>
 
     <section id="ueberuns" class="content">
-     <h1 style="color:blue;text-align: center;">Über uns</h1>
+      <h1 style="color:blue;text-align: center;">Über uns</h1>
       <p style="font-size: 25px;"><br><br>Wir beheben Fehler und liefern eine<br>
         perfekte Zusammenarbeit zwischen Kunde und Team!</p>
         <p style="font-size: 25px;"><br>___________</p><br>
       <p style="font-size: 25px;">Doch unser Service geht weit darüber hinaus. Wir unterstützen Sie<br>
-        Wir unterstützen Sie auch bei der Einrichtung neuer Geräte, übernehmen Systeminstallationen,<br>
+        auch bei der Einrichtung neuer Geräte, übernehmen Systeminstallationen,<br>
         richten Software ein und sorgen dafür, dass Ihr Computer optimal läuft. Ob Neuaufbau,<br>
         Erweiterung oder Optimierung – wir stehen Ihnen mit technischem Fachwissen<br>
         und persönlicher Unterstützung zur Seite.</p><br><br>
        <p style="font-size: 25px; color: green;">Gemeinsam stark: Mit unserem Geschäftspartner Trompeten Cover,<br>
-         der kreative Trompeten-Videos produziert, pflegen wir eine enge<br>
-         Kooperation – gegenseitige Unterstützung und Förderung<br>
-         sind Teil unserer gemeinsamen Vision.</p>
+          der kreative Trompeten-Videos produziert, pflegen wir eine enge<br>
+          Kooperation – gegenseitige Unterstützung und Förderung<br>
+          sind Teil unserer gemeinsamen Vision.</p>
 
-       <br>
-    <a href="https://www.youtube.com/@TrompetenM" target="_blank" class="YouTube-button">YouTube</a>
-    <a href="https://whatsapp.com/channel/0029VbAso7H0LKZ4rlWOJ200" target="_blank" class="WhatsApp-butten">WhatsApp</a>
+        <br>
+    <a href="https://www.youtube.com/@Trompeten_Cover" target="_blank" class="youtube-button">YouTube</a>
+    <a href="https://whatsapp.com/channel/0029VbAso7H0LKZ4rlWOJ200" target="_blank" class="whatsapp-button">WhatsApp</a>
     <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo">
-        </section>
+    </section>
 
     <section id="kontakt" class="content">
       <img src="1000025513.jpg" alt="Kontakt">
+      <h1>Kontaktinformationen</h1>
+      <p>Hier könnten Ihre Kontaktinformationen stehen, z.B. Telefonnummer, Adresse, etc.</p>
     </section>
 
     <section id="neuste-ankuenfte" class="content">
       <h1 style="color:blue;text-align: center;">Neuste Ankünfte</h1>
-      <p style="font-size: 25px;"><br><br>Windows 11 Instailation auf Geräten die noch die vollen Mindestanforderungen erfüllen<br><br></p>
-      <p style="font-size: 25px;"><br><br>Komplette 2-in-1 PC Scan mit Beschädigter Datein Entfernung<br><br></p>
+      <p style="font-size: 25px;"><br><br>Windows 11 Installation auf Geräten, die noch die vollen Mindestanforderungen erfüllen<br><br></p>
+      <p style="font-size: 25px;"><br><br>Kompletter 2-in-1 PC Scan mit Entfernung beschädigter Dateien<br><br></p>
     </section>
   </main>
 
@@ -200,6 +196,11 @@
       document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
       document.getElementById('link-' + id).classList.add('active');
     }
+
+    // Zeigt die Startseite beim Laden der Seite an
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('startseite');
+    });
   </script>
 </body>
 </html>
