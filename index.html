@@ -1,266 +1,273 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TECH SUPPORT & REPAIR</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4; /* Leichter Hintergrund für Kontrast */
-    }
-    
-    header {
-      /* Hintergrund mit Farbverlauf und Transparenz */
-      background: linear-gradient(to right, rgba(0, 123, 255, 0.9), rgba(0, 190, 255, 0.9));
-      display: flex;
-      justify-content: center;
-      padding: 15px 0;
-      /* Stärkerer, weicherer Schatten */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      /* Abgerundete Ecken und leicht geschwungen */
-      border-bottom-left-radius: 15px;
-      border-bottom-right-radius: 15px;
-      transition: background 0.3s ease;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TECH SUPPORT & REPAIR</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4; /* Leichter Hintergrund für Kontrast */
+    }
+    
+    header {
+      /* Hintergrund mit Farbverlauf und Transparenz */
+      background: linear-gradient(to right, rgba(0, 123, 255, 0.9), rgba(0, 190, 255, 0.9));
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      /* Stärkerer, weicherer Schatten */
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      /* Abgerundete Ecken und leicht geschwungen */
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
+      transition: background 0.3s ease; /* Sanfter Übergang beim Scrollen (falls weitere Effekte hinzugefügt werden) */
+    }
 
-    /* Hover-Effekt für den Header (optional, für zusätzliche Dynamik) */
-    header:hover {
-      background: linear-gradient(to right, rgba(0, 100, 200, 0.95), rgba(0, 150, 200, 0.95));
-    }
+    /* Hover-Effekt für den Header (optional, für zusätzliche Dynamik) */
+    header:hover {
+      background: linear-gradient(to right, rgba(0, 100, 200, 0.95), rgba(0, 150, 200, 0.95));
+    }
 
-    nav a {
-      margin: 0 20px;
-      text-decoration: none;
-      color: #fff; /* Weiße Schrift für Kontrast zum blauen Header */
-      font-weight: bold;
-      font-size: 1.1em; /* Etwas größere Schrift */
-      padding: 5px 0; /* Mehr Polsterung für Klickbereich */
-      position: relative; /* Für den Unterstrich-Effekt */
-      transition: color 0.3s ease; /* Sanfter Farbübergang */
-    }
+    nav a {
+      margin: 0 20px;
+      text-decoration: none;
+      color: #fff; /* Weiße Schrift für Kontrast zum blauen Header */
+      font-weight: bold;
+      font-size: 1.1em; /* Etwas größere Schrift */
+      padding: 5px 0; /* Mehr Polsterung für Klickbereich */
+      position: relative; /* Für den Unterstrich-Effekt */
+      transition: color 0.3s ease; /* Sanfter Farbübergang */
+    }
 
-    nav a:hover {
-      color: #ffd43b; /* Goldener Ton beim Hover */
-    }
+    nav a:hover {
+      color: #ffd43b; /* Goldener Ton beim Hover */
+    }
 
-    /* Cooler Unterstrich-Effekt beim Hover und Active */
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      background: #ffd43b; /* Goldener Unterstrich */
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s ease-in-out; /* Animation des Unterstrichs */
-    }
+    /* Cooler Unterstrich-Effekt beim Hover und Active */
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      background: #ffd43b; /* Goldener Unterstrich */
+      bottom: -5px;
+      left: 0;
+      transition: width 0.3s ease-in-out; /* Animation des Unterstrichs */
+    }
 
-    nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
 
-    nav a.active {
-      color: #ffd43b; /* Goldener Ton für aktive Seite */
-      text-shadow: none; /* Textschatten entfernt, da unnötig mit neuem Design */
-    }
+    nav a.active {
+      color: #ffd43b; /* Goldener Ton für aktive Seite */
+      text-shadow: none; /* Textschatten entfernt, da unnötig mit neuem Design */
+    }
 
-    .content {
-      display: none; /* Wichtig: Standardmäßig sind alle Inhalte versteckt */
-      padding: 30px;
-      text-align: center;
-      background-color: #ffffff; /* Weißer Hintergrund für den Inhalt */
-      margin: 20px auto; /* Zentrierung und Abstand von oben/unten */
-      max-width: 900px; /* Maximale Breite für bessere Lesbarkeit */
-      border-radius: 8px; /* Leicht abgerundete Ecken für den Inhaltsbereich */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Dezenter Schatten für Inhaltsbereiche */
-    }
-    .content.active {
-      display: block; /* Wichtig: Nur der aktive Inhalt wird angezeigt */
-    }
-    /* Button-Stile (unverändert) */
-    .email-button {
-      background-color: #ffd43b;
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-    .email-button:hover {
-      background-color: #e0b82f;
-    }
-    .youtube-button {
-      text-decoration: none;
-      background-color: #ff0000;
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      display: inline-block;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-    .youtube-button:hover {
-      background-color: #cc0000;
-    }
-    .whatsapp-button {
-      text-decoration: none;
-      background-color: #25D366;
-      color: white;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      display: inline-block;
-      margin-top: 20px;
-      transition: background-color 0.3s ease;
-    }
-    .whatsapp-button:hover {
-      background-color: #1DA851;
-    }
-    /* Allgemeine Bildstile für Inhalte */
-    .content img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
+    .content {
+      display: none;
+      padding: 30px;
+      text-align: center;
+      background-color: #ffffff; /* Weißer Hintergrund für den Inhalt */
+      margin: 20px auto; /* Zentrierung und Abstand von oben/unten */
+      max-width: 900px; /* Maximale Breite für bessere Lesbarkeit */
+      border-radius: 8px; /* Leicht abgerundete Ecken für den Inhaltsbereich */
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* Dezenter Schatten für Inhaltsbereiche */
+    }
+    .content.active {
+      display: block;
+    }
+    .email-button {
+      background-color: #ffd43b;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      transition: background-color 0.3s ease; /* Sanfter Übergang beim Hover */
+    }
+    .email-button:hover {
+      background-color: #e0b82f; /* Dunklerer Goldton beim Hover */
+    }
+    .youtube-button { /* Name des Buttons korrigiert */
+      text-decoration: none;
+      background-color: #ff0000;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    .youtube-button:hover {
+      background-color: #cc0000;
+    }
+    .whatsapp-button { /* Name des Buttons korrigiert */
+      text-decoration: none;
+      background-color: #25D366; /* WhatsApp Grün */
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      display: inline-block;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+    .whatsapp-button:hover {
+      background-color: #1DA851;
+    }
+    /* Allgemeine Bildstile für Inhalte */
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px; /* Leicht abgerundete Ecken für Bilder */
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Dezenter Schatten für Bilder */
+    }
 
-    /* Stil für das Über uns Logo */
-    .ueber-uns-logo {
-      width: 200px;
-      float: right;
-      margin-left: 20px;
-      margin-bottom: 20px;
-    }
-    
-    /* Responsive Anpassungen (unverändert) */
-    @media (max-width: 768px) {
-      nav a {
-        margin: 0 10px;
-        font-size: 0.9em;
-      }
+    /* Stil für das Über uns Logo */
+    .ueber-uns-logo {
+      width: 200px; /* Standardgröße für größere Bildschirme */
+      float: right; /* Bild rechts vom Text floaten lassen */
+      margin-left: 20px; /* Abstand zum Text links */
+      margin-bottom: 20px; /* Abstand zum nachfolgenden Inhalt */
+    }
 
-      .content {
-        padding: 15px;
-      }
+    /* NEU: Bild nur auf PC anzeigen (wurde in den Medien-Queries behandelt) */
+    /* Media Queries für responsive Anpassungen */
+    /* Anpassungen für kleinere Bildschirme (z.B. Smartphones und Tablets) */
+    @media (max-width: 768px) {
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9em;
+      }
 
-      /* Anpassung für das Über uns Logo auf kleinen Bildschirmen */
-      .ueber-uns-logo {
-        float: none;
-        display: block;
-        margin: 20px auto;
-        width: 150px;
-      }
+      .content {
+        padding: 15px;
+      }
 
-      #ueberuns p {
-        font-size: 18px;
-      }
-    }
+      /* Anpassung für das Über uns Logo auf kleinen Bildschirmen */
+      .ueber-uns-logo {
+        float: none; /* Float aufheben, damit es nicht am Text klebt */
+        display: block; /* Als Block-Element anzeigen */
+        margin: 20px auto; /* Zentrieren und vertikalen Abstand hinzufügen */
+        width: 150px; /* Kleinere Größe auf Smartphones */
+      }
 
-    @media (max-width: 480px) {
-      nav a {
-        margin: 0 5px;
-        font-size: 0.8em;
-      }
+      #ueberuns p {
+        font-size: 18px; /* Kleinere Schriftgröße für besseres Lesen */
+      }
+    }
 
-      .email-button, .youtube-button, .whatsapp-button {
-        padding: 8px 15px;
-        font-size: 14px;
-      }
+    /* Anpassungen für sehr kleine Bildschirme (z.B. ältere Smartphones) */
+    @media (max-width: 480px) {
+      nav a {
+        margin: 0 5px;
+        font-size: 0.8em;
+      }
 
-      .ueber-uns-logo {
-        width: 120px;
-      }
-    }
-  </style>
+      .email-button, .youtube-button, .whatsapp-button { /* alle Button-Klassen hier anpassen */
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+
+      .ueber-uns-logo {
+        width: 120px; /* Noch kleinere Größe */
+      }
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <a href="#" onclick="showSection('startseite', this)" id="link-startseite" class="active">Startseite</a>       <a href="#" onclick="showSection('uebermich', this)" id="link-uebermich">über mich</a>
-      <a href="#" onclick="showSection('kontakt', this)" id="link-kontakt">Kontakt</a>
-      <a href="#" onclick="showSection('neuste', this)" id="link-neuste">neuste</a>
-    </nav>
-  </header>
+  <header>
+    <nav>
+      <a href="#" onclick="showSection('startseite')" id="link-startseite">Startseite</a>
+      <a href="#" onclick="showSection('uebermich')" id="link-uebermich">über mich</a>
+      <a href="#" onclick="showSection('kontakt')" id="link-kontakt">Kontakt</a>
+      <a href="#" onclick="showSection('neuste')" id="link-neuste-ankuenfte">neuste</a>
+    </nav>
+  </header>
 
-  <main>
-    <section id="startseite" class="content active">       <img src="1000025512.jpg" alt="Startseite">
-      <h1>Herzlich Willkommen</h1> 
-      
-      <br>
-      <a class="email-button" href="mailto:techsupprt@gmx.de">E-Mail senden</a>
-      <a href="http://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button">YouTube</a>
-    </section>
+  <main>
+    <section id="startseite" class="content active">
+      <img src="1000025512.jpg" alt="Startseite">
+      <h1>Herzlich Willkommen</h1> 
+      
+      <br>
+      <a class="email-button" href="mailto:techsupprt@gmx.de">E-Mail senden</a>
+      <a href="http://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button">YouTube</a>
+    </section>
 
-    <section id="uebermich" class="content">
-      <h1 style="color:blue;text-align: center;">über mich</h1>
-      <p style="font-size: 25px;"><br><br>Fehlerbehebung und gute Zusammenarbeit</p>
-        <p style="font-size: 25px;"><br>___________</p><br>
-      <p style="font-size: 25px;">Doch die Tätigkeiten gehen weit darüber hinaus.<br>
-        auch bei der Einrichtung neuer Geräte übernehme ich Systeminstallationen,<br>
-        richte Software ein und mache alles dafür, dass ihr Computer optimal läuft. Also ob Neuaufbau,<br>
-        Erweiterung oder Optimierung – Ich stehe ihnen mit<br>
-        persönlicher Unterstützung zur Verfügung.</p><br><br>
-       <p style="font-size: 25px; color: green;">In Arbeit mit dem YouTube Kanal 
-         <br>@Tbrasstracks bieten wir auch
-         <br> kreative Trompeten Videos<br>
+    <section id="uebermich" class="content">
+      <h1 style="color:blue;text-align: center;">über mich</h1>
+      <p style="font-size: 25px;"><br><br>Fehlerbehebung und gute Zusammenarbeit</p>
+        <p style="font-size: 25px;"><br>___________</p><br>
+      <p style="font-size: 25px;">Doch die Tätigkeiten gehen weit darüber hinaus.<br>
+        auch bei der Einrichtung neuer Geräte übernehme ich Systeminstallationen,<br>
+        richte Software ein und mache alles dafür, dass ihr Computer optimal läuft. Also ob Neuaufbau,<br>
+        Erweiterung oder Optimierung – Ich stehe ihnen mit<br>
+        persönlicher Unterstützung zur Verfügung.</p><br><br>
+       <p style="font-size: 25px; color: green;">In Arbeit mit dem YouTube Kanal 
+         <br>@Tbrasstracks bieten wir auch
+         <br> kreative Trompeten Videos<br>
 
-        <br>
-    <a href="https://tbrasstracks.github.io/Tbrasstracks/" target="_blank" class="social Media">social Media</a>
-    <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo">
-    </section>
+        <br>
+    <a href="https://tbrasstracks.github.io/Tbrasstracks/" target="_blank" class="social Media">social Media</a>
+    <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo">
+    </section>
 
-    <section id="kontakt" class="content">
-       <h1 style="color:blue;text-align: center;">Kontaktinformationen</h1><br>        <img src="1000025513.jpg" alt="Kontakt">
-    </section>
+    <section id="kontakt" class="content">
+       <h1 style="color:blue;text-align: center;">Kontaktinformationen<br>
+      <img src="1000025513.jpg" alt="Kontakt">
+    </section>
 
-    <section id="neuste" class="content">
-      <h1 style="color:blue;text-align: center;">neuste</h1>
-      <p style="font-size: 25px;"><br><br>Windows 11 Installation auf Geräten, die noch die vollen Mindestanforderungen erfüllen<br><br></p>
-      <p style="font-size: 25px;"><br><br>Kompletter 2-in-1 PC Scan mit Entfernung beschädigter Dateien<br><br></p>
-      <p style="font-size: 25px;"><br><br>Gaming-Tastatur Reperatur: Leertaste repariert und Click-Sound gedämmt<br><br></p>
-    </section>
-  </main>
+    <section id="neuste" class="content">
+      <h1 style="color:blue;text-align: center;">neuste</h1>
+      <p style="font-size: 25px;"><br><br>Windows 11 Installation auf Geräten, die noch die vollen Mindestanforderungen erfüllen<br><br></p>
+      <p style="font-size: 25px;"><br><br>Kompletter 2-in-1 PC Scan mit Entfernung beschädigter Dateien<br><br></p>
+      <p style="font-size: 25px;"><br><br>Gaming-Tastatur Reperatur: Leertaste repariert und Click-Sound gedämmt<br><br></p>
+    </section>
+  </main>
 
-  <script>
-    function showSection(id, element) {
-      // Alle Inhaltsbereiche verstecken
-      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-      // Den ausgewählten Inhaltsbereich anzeigen
-      document.getElementById(id).classList.add('active');
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+      document.getElementById('link-' + id).classList.add('active');
+    }
 
-      // Die 'active' Klasse von allen Navigations-Links entfernen
-      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-      // Die 'active' Klasse zum angeklickten Link hinzufügen
-      element.classList.add('active');
-    }
-
-    // Beim Laden der Seite: Die 'Startseite' als aktive Sektion setzen und den Link markieren.
-    // WICHTIG: Die 'active'-Klassen wurden in den HTML-Elementen <section id="startseite"> und <a id="link-startseite"> bereits gesetzt.
-    // Die Funktion wird nur noch für den Klick benötigt.
-    document.addEventListener('DOMContentLoaded', () => {
-      // Stellt sicher, dass die Startseite beim Laden aktiv ist, falls die HTML-Klassen fehlen.
-      // Da die Klassen jetzt im HTML sind, ist dies redundant, aber sicher:
-      // showSection('startseite', document.getElementById('link-startseite')); 
-    });
-  </script>
+    // Zeigt die Startseite beim Laden der Seite an
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('startseite');
+    });
+  </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
