@@ -25,7 +25,7 @@
       /* Abgerundete Ecken und leicht geschwungen */
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease; /* Sanfter Übergang beim Scrollen (falls weitere Effekte hinzugefügt werden) */
     }
 
     /* Hover-Effekt für den Header (optional, für zusätzliche Dynamik) */
@@ -100,7 +100,7 @@
     .email-button:hover {
       background-color: #e0b82f; /* Dunklerer Goldton beim Hover */
     }
-    .youtube-button {
+    .youtube-button { /* Name des Buttons korrigiert */
       text-decoration: none;
       background-color: #ff0000;
       color: white;
@@ -117,7 +117,7 @@
     .youtube-button:hover {
       background-color: #cc0000;
     }
-    .whatsapp-button {
+    .whatsapp-button { /* Name des Buttons korrigiert */
       text-decoration: none;
       background-color: #25D366; /* WhatsApp Grün */
       color: white;
@@ -150,99 +150,9 @@
       margin-bottom: 20px; /* Abstand zum nachfolgenden Inhalt */
     }
 
-    /* Hier kommt das CSS für das Bewertungsformular */
-    .bewertungs-container {
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 30px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        font-family: Arial, sans-serif;
-        text-align: left; /* Text linksbündig im Formular */
-    }
-
-    .bewertungs-container h2, .bewertungs-container p {
-        text-align: center;
-    }
-
-    input[type="email"],
-    textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box; 
-        font-size: 16px;
-    }
-
-    .bewertungs-container button[type="submit"] {
-        background-color: #28a745; 
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 18px;
-        transition: background-color 0.3s;
-        /* WICHTIG: Überschreibt den center-align aus .content */
-        display: block; 
-        margin: 0 auto; 
-    }
-
-    .bewertungs-container button[type="submit"]:hover {
-        background-color: #218838;
-    }
-
-    .sterne-auswahl {
-        font-size: 30px;
-        cursor: pointer;
-        margin-bottom: 15px;
-        display: flex; 
-        direction: rtl; 
-        justify-content: center; /* ZENTRIERT die Sterne */
-        width: 100%;
-    }
-
-    .stern {
-        color: black;
-        transition: transform 0.2s;
-        line-height: 1; 
-        padding: 0 2px;
-    }
-
-    /* Stil für die gespeicherten Bewertungen */
-    #bewertungen-liste {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column-reverse; 
-    }
-
-    .gespeicherte-bewertung {
-        border: 1px solid #eee;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 5px;
-        background-color: #f9f9f9;
-        text-align: left; /* Inhalt der Bewertung linksbündig */
-    }
-    .bewertung-sterne {
-        font-size: 20px;
-    }
-    .bewertung-email {
-        font-size: 0.9em;
-        color: #666;
-        margin-bottom: 5px;
-    }
-    .gespeicherte-bewertung p {
-        margin-top: 5px;
-        line-height: 1.4;
-    }
-    /* Ende des Formular-CSS */
-
-
+    /* NEU: Bild nur auf PC anzeigen (wurde in den Medien-Queries behandelt) */
     /* Media Queries für responsive Anpassungen */
+    /* Anpassungen für kleinere Bildschirme (z.B. Smartphones und Tablets) */
     @media (max-width: 768px) {
       nav a {
         margin: 0 10px;
@@ -253,31 +163,33 @@
         padding: 15px;
       }
 
+      /* Anpassung für das Über uns Logo auf kleinen Bildschirmen */
       .ueber-uns-logo {
-        float: none;
-        display: block;
-        margin: 20px auto;
-        width: 150px;
+        float: none; /* Float aufheben, damit es nicht am Text klebt */
+        display: block; /* Als Block-Element anzeigen */
+        margin: 20px auto; /* Zentrieren und vertikalen Abstand hinzufügen */
+        width: 150px; /* Kleinere Größe auf Smartphones */
       }
 
       #ueberuns p {
-        font-size: 18px;
+        font-size: 18px; /* Kleinere Schriftgröße für besseres Lesen */
       }
     }
 
+    /* Anpassungen für sehr kleine Bildschirme (z.B. ältere Smartphones) */
     @media (max-width: 480px) {
       nav a {
         margin: 0 5px;
         font-size: 0.8em;
       }
 
-      .email-button, .youtube-button, .whatsapp-button {
+      .email-button, .youtube-button, .whatsapp-button { /* alle Button-Klassen hier anpassen */
         padding: 8px 15px;
         font-size: 14px;
       }
 
       .ueber-uns-logo {
-        width: 120px;
+        width: 120px; /* Noch kleinere Größe */
       }
     }
   </style>
@@ -304,169 +216,244 @@
       <a href="http://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button">YouTube</a>
     </section>
 
-        <section id="Bewertungen" class="content"> 
+    <section id="Bewertungen" class="content"> 
       <h1>Kundenbewertungen</h1>
-     
-        <div class="bewertungs-container">
-            <form id="bewertungsFormular">
-                <h2>Bewerte unsere Website!</h2>
-                <label for="email">Deine E-Mail-Adresse:</label>
-                <input type="email" id="email" name="email" required placeholder="name@beispiel.de">
+     <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewertungsformular</title>
+    
+    <style>
+        .bewertungs-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            font-family: Arial, sans-serif;
+        }
 
-                <p>Deine Bewertung (Sterne):</p>
-                <div class="sterne-auswahl" data-rating="0">
-                    <span class="stern" data-wert="5">⭐️</span>
-                    <span class="stern" data-wert="4">⭐️</span>
-                    <span class="stern" data-wert="3">⭐️</span>
-                    <span class="stern" data-wert="2">⭐️</span>
-                    <span class="stern" data-wert="1">⭐️</span>
-                    <input type="hidden" id="bewertung" name="bewertung" value="0">
-                </div>
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; 
+            font-size: 16px;
+        }
 
-                <label for="kommentar">Dein Kommentar:</label>
-                <textarea id="kommentar" name="kommentar" required rows="5" placeholder="Schreib hier deine Meinung..."></textarea>
+        button[type="submit"] {
+            background-color: #28a745; 
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
 
-                <button type="submit">Abschicken 📩</button>
-            </form>
-            
-            <hr>
+        button[type="submit"]:hover {
+            background-color: #218838;
+        }
 
-            <h2>Gespeicherte Bewertungen</h2>
-            <div id="bewertungen-liste">
+        .sterne-auswahl {
+            font-size: 30px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            display: flex; 
+            direction: rtl; /* Wichtig für die Klicklogik von rechts nach links */
+            justify-content: flex-end;
+            width: fit-content;
+        }
+
+        .stern {
+            /* Wir steuern das Symbol direkt per JS */
+            color: black; /* Oder Standardfarbe, wenn das Symbol nicht farbig ist */
+            transition: transform 0.2s;
+            line-height: 1; 
+            padding: 0 2px;
+        }
+
+        /* Stil für die gespeicherten Bewertungen */
+        #bewertungen-liste {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column-reverse; 
+        }
+
+        .gespeicherte-bewertung {
+            border: 1px solid #eee;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .bewertung-sterne {
+            /* Nur das gefüllte Symbol 🌟 wird im JS verwendet */
+            font-size: 20px;
+        }
+        .bewertung-email {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .gespeicherte-bewertung p {
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bewertungs-container">
+        <form id="bewertungsFormular">
+            <h2>Bewerte unsere Website!</h2>
+            <label for="email">Deine E-Mail-Adresse:</label>
+            <input type="email" id="email" name="email" required placeholder="name@beispiel.de">
+
+            <p>Deine Bewertung (Sterne):</p>
+            <div class="sterne-auswahl" data-rating="0">
+                <span class="stern" data-wert="5">⭐️</span>
+                <span class="stern" data-wert="4">⭐️</span>
+                <span class="stern" data-wert="3">⭐️</span>
+                <span class="stern" data-wert="2">⭐️</span>
+                <span class="stern" data-wert="1">⭐️</span>
+                <input type="hidden" id="bewertung" name="bewertung" value="0">
             </div>
-        </div>
-    </section>
-    
-    <script>
-        // Funktion zum Aktualisieren der Stern-Symbole im Formular
-        const updateStarSymbols = (currentRating) => {
-            // WICHTIG: Begrenzt die Auswahl auf die Sterne IN der Sektion "Bewertungen"
-            const sterne = document.querySelectorAll('#Bewertungen .stern'); 
-            sterne.forEach(stern => {
-                const wert = parseInt(stern.dataset.wert);
-                // Ändert das Symbol basierend auf dem aktuellen Rating (⭐️ zu 🌟)
-                stern.innerHTML = (wert <= currentRating) ? '🌟' : '⭐️';
-            });
-        };
 
-        const bewertungenListe = document.getElementById('bewertungen-liste');
-        const bewertungInput = document.getElementById('bewertung');
+            <label for="kommentar">Dein Kommentar:</label>
+            <textarea id="kommentar" name="kommentar" required rows="5" placeholder="Schreib hier deine Meinung..."></textarea>
 
-        // Lädt und zeigt gespeicherte Bewertungen an (Local Storage)
-        const ladeBewertungen = () => {
-            const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
-            if (bewertungenListe) { // Sicherheitsprüfung
-                bewertungenListe.innerHTML = ''; 
-                
-                bewertungen.forEach(bew => {
-                    const div = document.createElement('div');
-                    div.className = 'gespeicherte-bewertung';
-                    
-                    // Zeigt NUR die Anzahl der GEFÜLLTEN Sterne (🌟) an.
-                    const sterneAnzeige = '🌟'.repeat(bew.sterne);
-                    
-                    div.innerHTML = `
-                        <div class="bewertung-sterne">${sterneAnzeige}</div>
-                        <div class="bewertung-email">E-Mail: ${bew.email}</div>
-                        <p><strong>Kommentar:</strong> ${bew.kommentar}</p>
-                    `;
-                    bewertungenListe.appendChild(div); 
-                });
-            }
-        };
-        
-        // Fügt alle Event Listener hinzu, sobald das Dokument geladen ist
-        document.addEventListener('DOMContentLoaded', () => {
-            const bewertungsFormular = document.getElementById('bewertungsFormular');
-            const sterneAuswahl = document.querySelector('#Bewertungen .sterne-auswahl');
-            const sterne = document.querySelectorAll('#Bewertungen .stern'); // Spezifisch für diese Sektion
+            <button type="submit">Abschicken 📩</button>
+        </form>
+        
+        <hr>
 
-            if (bewertungsFormular) {
-                // --- Sterne Logik ---
-                sterne.forEach(stern => {
-                    stern.addEventListener('click', () => {
-                        const wert = parseInt(stern.dataset.wert);
-                        bewertungInput.value = wert;
-                        sterneAuswahl.setAttribute('data-rating', wert); 
-                        updateStarSymbols(wert); 
-                    });
-                    
-                    // Hover-Logik: Temporäres Füllen der Symbole
-                    stern.addEventListener('mouseover', () => {
-                        const hoverWert = parseInt(stern.dataset.wert);
-                        sterne.forEach(s => {
-                            const wert = parseInt(s.dataset.wert);
-                            s.innerHTML = (wert <= hoverWert) ? '🌟' : '⭐️';
-                        });
-                    });
+        <h2>Gespeicherte Bewertungen</h2>
+        <div id="bewertungen-liste">
+            </div>
+    </div>
 
-                    stern.addEventListener('mouseout', () => {
-                        const aktuellerWert = parseInt(bewertungInput.value) || 0;
-                        updateStarSymbols(aktuellerWert);
-                    });
-                });
+    <script>
+        // Funktion zum Aktualisieren der Stern-Symbole im Formular
+        const updateStarSymbols = (currentRating) => {
+            const sterne = document.querySelectorAll('.stern');
+            sterne.forEach(stern => {
+                const wert = parseInt(stern.dataset.wert);
+                // Ändert das Symbol basierend auf dem aktuellen Rating
+                stern.innerHTML = (wert <= currentRating) ? '🌟' : '⭐️';
+            });
+        };
 
-                // Formular Absenden
-                bewertungsFormular.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    
-                    const email = document.getElementById('email').value;
-                    const sterneWert = parseInt(bewertungInput.value);
-                    const kommentar = document.getElementById('kommentar').value;
+        document.addEventListener('DOMContentLoaded', () => {
+            const bewertungsFormular = document.getElementById('bewertungsFormular');
+            const sterneAuswahl = document.querySelector('.sterne-auswahl');
+            const sterne = document.querySelectorAll('.stern');
+            const bewertungInput = document.getElementById('bewertung');
+            const bewertungenListe = document.getElementById('bewertungen-liste');
+            
+            // --- Sterne Logik ---
+            sterne.forEach(stern => {
+                stern.addEventListener('click', () => {
+                    const wert = parseInt(stern.dataset.wert);
+                    bewertungInput.value = wert;
+                    sterneAuswahl.setAttribute('data-rating', wert); 
+                    updateStarSymbols(wert); // Aktualisiert die Symbole nach Klick
+                });
+                
+                // Hover-Logik: Temporäres Füllen der Symbole
+                stern.addEventListener('mouseover', () => {
+                    const hoverWert = parseInt(stern.dataset.wert);
+                    sterne.forEach(s => {
+                        const wert = parseInt(s.dataset.wert);
+                        s.innerHTML = (wert <= hoverWert) ? '🌟' : '⭐️';
+                    });
+                });
 
-                    if (sterneWert === 0) {
-                        alert("Bitte wähle eine Stern-Bewertung aus.");
-                        return;
-                    }
+                stern.addEventListener('mouseout', () => {
+                    // Stellt das Symbol basierend auf dem gespeicherten Wert wieder her
+                    const aktuellerWert = parseInt(bewertungInput.value) || 0;
+                    updateStarSymbols(aktuellerWert);
+                });
+            });
 
-                    const neueBewertung = {
-                        email: email,
-                        sterne: sterneWert,
-                        kommentar: kommentar,
-                        datum: new Date().toLocaleDateString('de-DE')
-                    };
-                    
-                    // Speichern
-                    const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
-                    bewertungen.push(neueBewertung);
-                    localStorage.setItem('webBewertungen', JSON.stringify(bewertungen));
-                    
-                    // E-Mail-Versand (Simulation)
-                    const mailBody = `Sterne: ${sterneWert}\nE-Mail: ${email}\nKommentar: ${kommentar}`;
-                    const mailLink = `mailto:techsupprt@gmx.de?subject=Neue Bewertung von der Website&body=${encodeURIComponent(mailBody)}`;
-                    
-                    window.open(mailLink, '_blank'); 
+            // --- Speicherung und Anzeige Logik ---
+            
+            // Lädt und zeigt gespeicherte Bewertungen an (Local Storage)
+            const ladeBewertungen = () => {
+                const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
+                bewertungenListe.innerHTML = ''; 
+                
+                bewertungen.forEach(bew => {
+                    const div = document.createElement('div');
+                    div.className = 'gespeicherte-bewertung';
+                    
+                    // Zeigt NUR die Anzahl der GEFÜLLTEN Sterne (🌟) an.
+                    const sterneAnzeige = '🌟'.repeat(bew.sterne);
+                    
+                    div.innerHTML = `
+                        <div class="bewertung-sterne">${sterneAnzeige}</div>
+                        <div class="bewertung-email">E-Mail: ${bew.email}</div>
+                        <p><strong>Kommentar:</strong> ${bew.kommentar}</p>
+                    `;
+                    bewertungenListe.appendChild(div); 
+                });
+            };
+            
+            // Formular Absenden
+            bewertungsFormular.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const sterneWert = parseInt(bewertungInput.value);
+                const kommentar = document.getElementById('kommentar').value;
 
-                    // UI aktualisieren
-                    bewertungsFormular.reset();
-                    sterneAuswahl.setAttribute('data-rating', '0'); 
-                    bewertungInput.value = '0';
-                    updateStarSymbols(0);
-                    ladeBewertungen();
+                if (sterneWert === 0) {
+                     alert("Bitte wähle eine Stern-Bewertung aus.");
+                     return;
+                }
 
-                    alert("Bewertung wurde gespeichert und Versand simuliert.");
-                });
-            }
+                const neueBewertung = {
+                    email: email,
+                    sterne: sterneWert,
+                    kommentar: kommentar,
+                    datum: new Date().toLocaleDateString('de-DE')
+                };
+                
+                // 1. Dauerhafte Speicherung
+                const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
+                bewertungen.push(neueBewertung);
+                localStorage.setItem('webBewertungen', JSON.stringify(bewertungen));
+                
+                // 2. E-Mail-Versand (Simulation über mailto:)
+                const mailBody = `Sterne: ${sterneWert}\nE-Mail: ${email}\nKommentar: ${kommentar}`;
+                const mailLink = `mailto:techsupprt@gmx.de?subject=Neue Bewertung von der Website&body=${encodeURIComponent(mailBody)}`;
+                
+                window.open(mailLink, '_blank'); 
 
-            // Globales Navigations-Script aus der ursprünglichen Datei
-            function showSection(id) {
-                document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-                document.getElementById(id).classList.add('active');
-                document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-                document.getElementById('link-' + id).classList.add('active');
-            }
-            
-            // Definiere showSection global, falls es später aufgerufen wird
-            window.showSection = showSection; 
+                // 3. UI aktualisieren
+                bewertungsFormular.reset();
+                sterneAuswahl.setAttribute('data-rating', '0'); 
+                bewertungInput.value = '0';
+                updateStarSymbols(0); // Setzt die Sterne auf ⭐️ zurück
+                ladeBewertungen();
 
-            // Zeigt die Startseite beim Laden der Seite an
-            showSection('startseite');
-            
-            ladeBewertungen(); // Lade Bewertungen beim Start
-            updateStarSymbols(0); // Setzt die Sterne auf ⭐️ zurück
-        });
-    </script>
-    
+                alert("Bewertung wurde gespeichert und Versand simuliert.");
+            });
+
+            // Beim Laden der Seite die Bewertungen anzeigen
+            ladeBewertungen();
+            updateStarSymbols(0); // Stellt sicher, dass die Sterne beim Start ⭐️ sind
+        });
+    </script>
+</body>
+</html>
     <section id="Kosten Übersicht" class="content"> 
       <h1>Kosten</h1>
       <p>Hir wurden noch keine Kosten eingetragen.</p>
@@ -504,8 +491,6 @@
   </main>
 
   <script>
-    // Ursprüngliches Navigations-Script (jetzt am Ende des Body, für gute Praxis)
-    // Dieses Script ist nur für die Navigation zuständig, das Bewerter-Script ist oben!
     function showSection(id) {
       document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
       document.getElementById(id).classList.add('active');
@@ -513,10 +498,10 @@
       document.getElementById('link-' + id).classList.add('active');
     }
 
-    // Wird in der DOMContentLoaded-Funktion oben aufgerufen
-    // document.addEventListener('DOMContentLoaded', () => {
-    //   showSection('startseite');
-    // });
+    // Zeigt die Startseite beim Laden der Seite an
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('startseite');
+    });
   </script>
 </body>
 </html>
