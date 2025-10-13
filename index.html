@@ -248,7 +248,7 @@
         }
 
         button[type="submit"] {
-            background-color: #28a745; /* Grüner Absende-Button */
+            background-color: #28a745; 
             color: white;
             padding: 12px 20px;
             border: none;
@@ -267,14 +267,14 @@
             cursor: pointer;
             margin-bottom: 15px;
             display: flex; 
-            direction: rtl; /* Wichtig: Dreht die Reihenfolge für das Füll-Prinzip */
+            direction: rtl; /* Wichtig: Dreht die Reihenfolge für das Füll-Prinzip (von rechts nach links) */
             justify-content: flex-end;
             width: fit-content;
         }
 
         .stern {
-            /* Das Symbol ist im HTML, wir verwenden nur die Farbe (gold/grau) */
-            color: #ccc; /* Standardfarbe unausgefüllt */
+            /* Das Symbol ist ⭐️, die Füllung kommt über die Farbe */
+            color: #ccc; /* Standardfarbe unausgefüllt (Grau) */
             transition: color 0.2s;
             line-height: 1; 
             padding: 0 2px;
@@ -286,7 +286,7 @@
             color: gold; 
         }
 
-        /* Füllen der Sterne nach KLICK */
+        /* Füllen der Sterne nach KLICK (basierend auf dem data-rating Attribut) */
         .sterne-auswahl[data-rating="1"] .stern[data-wert="1"],
         .sterne-auswahl[data-rating="2"] .stern:nth-child(-n+2), 
         .sterne-auswahl[data-rating="3"] .stern:nth-child(-n+3),
@@ -310,8 +310,7 @@
             background-color: #f9f9f9;
         }
         .bewertung-sterne {
-            /* Füllfarbe für die gespeicherten Sterne */
-            color: gold;
+            /* Die tatsächlichen gespeicherten Sterne werden mit 🌟 (gefüllt) dargestellt */
             font-size: 20px;
         }
         .bewertung-email {
@@ -335,11 +334,11 @@
 
             <p>Deine Bewertung (Sterne):</p>
             <div class="sterne-auswahl" data-rating="0">
-                <span class="stern" data-wert="5">⭐</span>
-                <span class="stern" data-wert="4">⭐</span>
-                <span class="stern" data-wert="3">⭐</span>
-                <span class="stern" data-wert="2">⭐</span>
-                <span class="stern" data-wert="1">⭐</span>
+                <span class="stern" data-wert="5">⭐️</span>
+                <span class="stern" data-wert="4">⭐️</span>
+                <span class="stern" data-wert="3">⭐️</span>
+                <span class="stern" data-wert="2">⭐️</span>
+                <span class="stern" data-wert="1">⭐️</span>
                 <input type="hidden" id="bewertung" name="bewertung" value="0">
             </div>
 
@@ -387,6 +386,7 @@
 
             // --- Speicherung und Anzeige Logik ---
             
+            // Lädt und zeigt gespeicherte Bewertungen an (Local Storage)
             const ladeBewertungen = () => {
                 const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
                 bewertungenListe.innerHTML = ''; 
@@ -395,7 +395,7 @@
                     const div = document.createElement('div');
                     div.className = 'gespeicherte-bewertung';
                     
-                    // NEUES SYMBOL: Verwendet 🌟 (gefüllter Stern) für die gespeicherte Anzeige
+                    // Zeigt NUR die Anzahl der GEFÜLLTEN Sterne (🌟) an.
                     const sterneAnzeige = '🌟'.repeat(bew.sterne);
                     
                     div.innerHTML = `
@@ -504,6 +504,7 @@
   </script>
 </body>
 </html>
+
 
 
 
