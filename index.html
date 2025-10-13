@@ -267,39 +267,24 @@
             cursor: pointer;
             margin-bottom: 15px;
             display: flex; 
-            direction: rtl; /* Wichtig: Dreht die Reihenfolge für das Füll-Prinzip (von rechts nach links) */
+            direction: rtl; /* Wichtig für die Klicklogik von rechts nach links */
             justify-content: flex-end;
             width: fit-content;
         }
 
         .stern {
-            /* Das Symbol ist ⭐️, die Füllung kommt über die Farbe */
-            color: #ccc; /* Standardfarbe unausgefüllt (Grau) */
-            transition: color 0.2s;
+            /* Wir steuern das Symbol direkt per JS */
+            color: black; /* Oder Standardfarbe, wenn das Symbol nicht farbig ist */
+            transition: transform 0.2s;
             line-height: 1; 
             padding: 0 2px;
-        }
-
-        /* Füllen der Sterne beim HOVER */
-        .sterne-auswahl:not([data-rating='0']) .stern:hover,
-        .sterne-auswahl:not([data-rating='0']) .stern:hover ~ .stern {
-            color: gold; 
-        }
-
-        /* Füllen der Sterne nach KLICK (basierend auf dem data-rating Attribut) */
-        .sterne-auswahl[data-rating="1"] .stern[data-wert="1"],
-        .sterne-auswahl[data-rating="2"] .stern:nth-child(-n+2), 
-        .sterne-auswahl[data-rating="3"] .stern:nth-child(-n+3),
-        .sterne-auswahl[data-rating="4"] .stern:nth-child(-n+4),
-        .sterne-auswahl[data-rating="5"] .stern:nth-child(-n+5) {
-            color: gold !important; 
         }
 
         /* Stil für die gespeicherten Bewertungen */
         #bewertungen-liste {
             margin-top: 20px;
             display: flex;
-            flex-direction: column-reverse; /* Zeigt die neuesten Bewertungen zuerst an */
+            flex-direction: column-reverse; 
         }
 
         .gespeicherte-bewertung {
@@ -310,7 +295,7 @@
             background-color: #f9f9f9;
         }
         .bewertung-sterne {
-            /* Die tatsächlichen gespeicherten Sterne werden mit 🌟 (gefüllt) dargestellt */
+            /* Nur das gefüllte Symbol 🌟 wird im JS verwendet */
             font-size: 20px;
         }
         .bewertung-email {
@@ -356,6 +341,16 @@
     </div>
 
     <script>
+        // Funktion zum Aktualisieren der Stern-Symbole im Formular
+        const updateStarSymbols = (currentRating) => {
+            const sterne = document.querySelectorAll('.stern');
+            sterne.forEach(stern => {
+                const wert = parseInt(stern.dataset.wert);
+                // Ändert das Symbol basierend auf dem aktuellen Rating
+                stern.innerHTML = (wert <= currentRating) ? '🌟' : '⭐️';
+            });
+        };
+
         document.addEventListener('DOMContentLoaded', () => {
             const bewertungsFormular = document.getElementById('bewertungsFormular');
             const sterneAuswahl = document.querySelector('.sterne-auswahl');
@@ -366,21 +361,25 @@
             // --- Sterne Logik ---
             sterne.forEach(stern => {
                 stern.addEventListener('click', () => {
-                    const wert = stern.dataset.wert;
+                    const wert = parseInt(stern.dataset.wert);
                     bewertungInput.value = wert;
                     sterneAuswahl.setAttribute('data-rating', wert); 
+                    updateStarSymbols(wert); // Aktualisiert die Symbole nach Klick
                 });
                 
+                // Hover-Logik: Temporäres Füllen der Symbole
                 stern.addEventListener('mouseover', () => {
-                    sterneAuswahl.classList.add('hovering');
+                    const hoverWert = parseInt(stern.dataset.wert);
                     sterne.forEach(s => {
-                        s.style.color = (s.dataset.wert >= stern.dataset.wert) ? 'gold' : ''; 
+                        const wert = parseInt(s.dataset.wert);
+                        s.innerHTML = (wert <= hoverWert) ? '🌟' : '⭐️';
                     });
                 });
 
                 stern.addEventListener('mouseout', () => {
-                    sterneAuswahl.classList.remove('hovering');
-                    sterne.forEach(s => s.style.color = '');
+                    // Stellt das Symbol basierend auf dem gespeicherten Wert wieder her
+                    const aktuellerWert = parseInt(bewertungInput.value) || 0;
+                    updateStarSymbols(aktuellerWert);
                 });
             });
 
@@ -442,6 +441,7 @@
                 bewertungsFormular.reset();
                 sterneAuswahl.setAttribute('data-rating', '0'); 
                 bewertungInput.value = '0';
+                updateStarSymbols(0); // Setzt die Sterne auf ⭐️ zurück
                 ladeBewertungen();
 
                 alert("Bewertung wurde gespeichert und Versand simuliert.");
@@ -449,6 +449,7 @@
 
             // Beim Laden der Seite die Bewertungen anzeigen
             ladeBewertungen();
+            updateStarSymbols(0); // Stellt sicher, dass die Sterne beim Start ⭐️ sind
         });
     </script>
 </body>
@@ -504,6 +505,7 @@
   </script>
 </body>
 </html>
+
 
 
 
