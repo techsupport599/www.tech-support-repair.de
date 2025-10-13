@@ -248,7 +248,7 @@
         }
 
         button[type="submit"] {
-            background-color: #28a745; 
+            background-color: #28a745; /* Grüner Absende-Button */
             color: white;
             padding: 12px 20px;
             border: none;
@@ -298,7 +298,7 @@
         #bewertungen-liste {
             margin-top: 20px;
             display: flex;
-            flex-direction: column-reverse; 
+            flex-direction: column-reverse; /* Zeigt die neuesten Bewertungen zuerst an */
         }
 
         .gespeicherte-bewertung {
@@ -370,7 +370,6 @@
                     sterneAuswahl.setAttribute('data-rating', wert); 
                 });
                 
-                // Fügt einen kurzfristigen visuellen Hover-Effekt hinzu
                 stern.addEventListener('mouseover', () => {
                     sterneAuswahl.classList.add('hovering');
                     sterne.forEach(s => {
@@ -395,8 +394,8 @@
                     const div = document.createElement('div');
                     div.className = 'gespeicherte-bewertung';
                     
+                    // KORREKTUR: Zeigt nur die Anzahl der gefüllten Sterne (⭐️) an.
                     const sterneAnzeige = '⭐️'.repeat(bew.sterne);
-                    const sterneAnzeige = gefuellt + leer;
                     
                     div.innerHTML = `
                         <div class="bewertung-sterne">${sterneAnzeige}</div>
@@ -427,13 +426,12 @@
                     datum: new Date().toLocaleDateString('de-DE')
                 };
                 
-                // 1. Dauerhafte Speicherung im Browser des Nutzers
+                // 1. Dauerhafte Speicherung
                 const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
                 bewertungen.push(neueBewertung);
                 localStorage.setItem('webBewertungen', JSON.stringify(bewertungen));
                 
-                // 2. E-Mail-Versand (Achtung: Funktioniert nur als Mail-Client-Link!)
-                // Für den echten, automatischen Versand brauchst du eine Server-Technologie!
+                // 2. E-Mail-Versand (Simulation über mailto:)
                 const mailBody = `Sterne: ${sterneWert}\nE-Mail: ${email}\nKommentar: ${kommentar}`;
                 const mailLink = `mailto:techsupprt@gmx.de?subject=Neue Bewertung von der Website&body=${encodeURIComponent(mailBody)}`;
                 
@@ -454,8 +452,6 @@
     </script>
 </body>
 </html>
-    </section>
-
     <section id="Kosten Übersicht" class="content"> 
       <h1>Kosten</h1>
       <p>Hir wurden noch keine Kosten eingetragen.</p>
@@ -507,6 +503,7 @@
   </script>
 </body>
 </html>
+
 
 
 
