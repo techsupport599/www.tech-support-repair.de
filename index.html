@@ -291,4 +291,258 @@
         margin: 15px 0;
         border-radius: 6px;
         text-align: left;
-        font-weight:
+        font-weight: 500;
+        transition: background-color 0.3s;
+    }
+    #neuste p:hover {
+        background-color: #d8e5f5;
+    }
+
+    /* Media Queries für responsive Anpassungen */
+    @media (max-width: 900px) {
+        nav a {
+            margin: 0 15px;
+            font-size: 1.0em;
+        }
+    }
+    @media (max-width: 768px) {
+      nav {
+          flex-wrap: wrap; /* Links brechen um */
+          padding: 0 10px;
+      }
+      header {
+          padding: 15px 0;
+      }
+      nav a {
+        margin: 5px 10px;
+        font-size: 0.9em;
+      }
+      .content {
+        padding: 30px 15px;
+        margin: 20px auto;
+      }
+      .ueber-uns-logo {
+        float: none;
+        display: block;
+        margin: 20px auto;
+        width: 150px;
+      }
+      #ueberuns p {
+        font-size: 1.1em;
+        text-align: center;
+      }
+      .content a.button {
+        display: block;
+        margin: 10px auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav a {
+        margin: 5px 5px;
+        font-size: 0.75em;
+      }
+      .content h1 {
+        font-size: 1.8em;
+      }
+      .sterne-auswahl {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#" onclick="showSection('startseite')" id="link-startseite">Startseite</a>
+      <a href="#" onclick="showSection('Bewertungen')" id="link-Bewertungen">Bewertungen</a>
+      <a href="#" onclick="showSection('Kosten Übersicht')" id="link-Kosten Übersicht">Kosten Übersicht</a>
+      <a href="#" onclick="showSection('ueber uns')" id="link-ueber-uns">über uns</a>
+      <a href="#" onclick="showSection('kontakt')" id="link-kontakt">Kontakt</a>
+      <a href="#" onclick="showSection('neuste')" id="link-neuste">neuste</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="startseite" class="content active">
+      <img src="1000025512.jpg" alt="Startseite">
+      <h1>Herzlich Willkommen bei TECH SUPPORT & REPAIR 🛠️</h1> 
+      <p>Ihr Partner für schnelle **Fehlerbehebung** und erstklassigen Service. Wir sorgen dafür, dass Ihre Geräte optimal laufen.</p>
+      
+      <a class="email-button button" href="mailto:techsupprt@gmx.de">E-Mail senden 📧</a>
+      <a href="http://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button button">YouTube Kanal ▶️</a>
+    </section>
+
+        <section id="Bewertungen" class="content"> 
+      <h1>Ihre Kundenbewertungen ⭐</h1>
+      <div class="bewertungs-container">
+            <form id="bewertungsFormular">
+                <h2>Bewerte uns jetzt!</h2>
+                <label for="email">Deine E-Mail-Adresse:</label>
+                <input type="email" id="email" name="email" required placeholder="name@beispiel.de">
+
+                <p>Deine Bewertung (Sterne):</p>
+                <div class="sterne-auswahl" data-rating="0">
+                    <span class="stern" data-wert="5">⭐</span>
+                    <span class="stern" data-wert="4">⭐</span>
+                    <span class="stern" data-wert="3">⭐</span>
+                    <span class="stern" data-wert="2">⭐</span>
+                    <span class="stern" data-wert="1">⭐</span>
+                    <input type="hidden" id="bewertung" name="bewertung" value="0">
+                </div>
+
+                <label for="kommentar">Dein Kommentar:</label>
+                <textarea id="kommentar" name="kommentar" required rows="5" placeholder="Schreib hier deine Meinung..."></textarea>
+
+                <button type="submit">Abschicken 📩</button>
+            </form>
+            
+            <hr style="margin: 30px 0; border-top: 1px dashed #ced4da;">
+
+            <h2>Gespeicherte Bewertungen</h2>
+            <div id="bewertungen-liste">
+            </div>
+      </div>
+    </section>
+
+    <section id="Kosten Übersicht" class="content"> 
+      <h1>Kosten Übersicht 💰</h1>
+      <p>Hier wurden noch keine Kosten eingetragen. Bitte kontaktieren Sie uns direkt für ein individuelles Angebot!</p>
+      <img src="placeholder_kosten.jpg" alt="Platzhalter Kosten">
+    </section>
+  
+    <section id="ueber uns" class="content" id="ueberuns">
+        <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo">
+      <h1>Über uns 🤝</h1>
+      <p>Die Grundpfeiler unserer Arbeit sind **effiziente Fehlerbehebung** und eine offene, gute Zusammenarbeit mit unseren Kunden.</p>
+      <p class="trenner">***</p>
+      <p>Unsere Tätigkeiten gehen weit über die reine Reparatur hinaus. Wir unterstützen Sie bei der **Einrichtung neuer Geräte**, übernehmen **Systeminstallationen**, richten Software ein und optimieren Ihren Computer für beste Leistung. Ob Neuaufbau, Erweiterung oder simple Optimierung – wir bieten Ihnen stets **persönliche Unterstützung**.</p>
+      <p class="youtube-info">🔔 In Zusammenarbeit mit dem YouTube Kanal **@Tbrasstracks** bieten wir auch kreative Trompeten Videos an.</p>
+       
+      <a href="https://tbrasstracks.github.io/Tbrasstracks/" target="_blank" class="social-media-link button">Social Media (Tbrasstracks)</a>
+    </section>
+
+    <section id="kontakt" class="content">
+       <h1>Kontaktinformationen 📞</h1>
+      <img src="1000025513.jpg" alt="Kontakt">
+      <p>Sie erreichen uns am besten per E-Mail oder über unsere Social-Media-Kanäle:</p>
+      <a class="email-button button" href="mailto:techsupprt@gmx.de">E-Mail senden 📧</a>
+      <a href="tel:+49123456789" class="whatsapp-button button">WhatsApp Kontakt (Platzhalter) 🟢</a>
+    </section>
+
+    <section id="neuste" class="content">
+      <h1>Neuste Angebote & Updates ✨</h1>
+      <div>
+        <p>✅ **Windows 11 Installation:** Auf Geräten, die die vollen Mindestanforderungen erfüllen.</p>
+        <p>✅ **Kompletter 2-in-1 PC Scan:** Mit Entfernung beschädigter Dateien zur Systembereinigung.</p>
+        <p>✅ **Gaming-Tastatur Reparatur:** Leertaste repariert und Click-Sound gedämmt.</p>
+      </div>
+    </section>
+  </main>
+
+    <script>
+    // Funktion für die Navigation
+    function showSection(id) {
+      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+      
+      // Link-ID für "über uns" korrigieren
+      const linkId = (id === 'ueber uns') ? 'link-ueber-uns' : 'link-' + id;
+      const activeLink = document.getElementById(linkId);
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+    }
+
+    // --- Bewertungs-Logik ---
+    const ladeBewertungen = () => {
+        const bewertungenListe = document.getElementById('bewertungen-liste');
+        const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
+        
+        if (bewertungenListe) { 
+            bewertungenListe.innerHTML = ''; 
+            
+            bewertungen.forEach(bew => {
+                const div = document.createElement('div');
+                div.className = 'gespeicherte-bewertung';
+                
+                const sterneAnzeige = '⭐'.repeat(bew.sterne); // Zeigt gefüllte Sterne an
+                
+                div.innerHTML = `
+                    <span class="bewertung-sterne">${sterneAnzeige}</span>
+                    <div class="bewertung-email">E-Mail: ${bew.email}</div>
+                    <p><strong>Kommentar:</strong> ${bew.kommentar}</p>
+                `;
+                bewertungenListe.prepend(div); // NEU: fügt die neue Bewertung oben ein
+            });
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Navigation starten
+        showSection('startseite');
+        
+        // --- Sterne Logik initialisieren ---
+        const bewertungsFormular = document.getElementById('bewertungsFormular');
+        const sterneAuswahl = document.querySelector('.sterne-auswahl');
+        const sterne = document.querySelectorAll('.stern');
+        const bewertungInput = document.getElementById('bewertung');
+
+        if (bewertungsFormular) {
+            // Klick-Logik
+            sterne.forEach(stern => {
+                stern.addEventListener('click', () => {
+                    const wert = stern.dataset.wert;
+                    bewertungInput.value = wert;
+                    sterneAuswahl.setAttribute('data-rating', wert);
+                });
+            });
+            
+            // Formular Absenden
+            bewertungsFormular.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const sterneWert = parseInt(bewertungInput.value);
+                const kommentar = document.getElementById('kommentar').value;
+
+                if (sterneWert === 0) {
+                     alert("Bitte wähle eine Stern-Bewertung aus.");
+                     return;
+                }
+
+                const neueBewertung = {
+                    email: email,
+                    sterne: sterneWert,
+                    kommentar: kommentar,
+                    datum: new Date().toLocaleDateString('de-DE')
+                };
+                
+                // Speichern
+                const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
+                bewertungen.push(neueBewertung);
+                localStorage.setItem('webBewertungen', JSON.stringify(bewertungen));
+                
+                // E-Mail-Versand (Simulation)
+                const mailBody = `Sterne: ${sterneWert}\nE-Mail: ${email}\nKommentar: ${kommentar}`;
+                const mailLink = `mailto:techsupprt@gmx.de?subject=Neue Bewertung von der Website&body=${encodeURIComponent(mailBody)}`;
+                
+                window.open(mailLink, '_blank'); 
+
+                // UI aktualisieren
+                bewertungsFormular.reset();
+                sterneAuswahl.setAttribute('data-rating', '0'); 
+                bewertungInput.value = '0';
+                ladeBewertungen();
+
+                alert("Bewertung wurde gespeichert und Versand simuliert.");
+            });
+        }
+        
+        // Bewertungen beim Start laden
+        ladeBewertungen();
+    });
+  </script>
+</body>
+</html>
