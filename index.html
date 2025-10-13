@@ -395,8 +395,7 @@
                     const div = document.createElement('div');
                     div.className = 'gespeicherte-bewertung';
                     
-                    const gefuellt = '⭐️'.repeat(bew.sterne);
-                    const leer = '⭐'.repeat(5 - bew.sterne);
+                    const sterneAnzeige = '⭐️'.repeat(bew.sterne);
                     const sterneAnzeige = gefuellt + leer;
                     
                     div.innerHTML = `
@@ -508,6 +507,7 @@
   </script>
 </body>
 </html>
+
 
 
 
