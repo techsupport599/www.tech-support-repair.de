@@ -8,50 +8,67 @@
     /* Globale Stile */
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modernere Schriftart */
-      background-color: #e9ecef; /* Sehr leichter Hintergrund */
-      color: #343a40; /* Dunkle Schriftfarbe */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f9; /* Heller, fast weißer Hintergrund */
+      color: #343a40;
+      scroll-behavior: smooth; /* Sanfteres Scrollen, falls nötig */
     }
     
     /* Header & Navigation */
     header {
-      background: linear-gradient(to right, #007bff, #00bfff); /* Helles, freundliches Blau */
+      /* Verzierter, durchgehender Header */
+      background: linear-gradient(90deg, #0056b3 0%, #007bff 50%, #0056b3 100%); 
       display: flex;
       justify-content: center;
-      padding: 15px 0;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Tieferer Schatten */
+      padding: 18px 0; /* Mehr Höhe */
+      /* Stärkerer, blauer Schatten */
+      box-shadow: 0 8px 20px rgba(0, 86, 179, 0.4); 
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom-left-radius: 20px; /* Stärkere Rundung */
-      border-bottom-right-radius: 20px;
+      /* Abgerundete Ecken wurden entfernt, um es über die ganze Breite zu ziehen */
+      transition: background 0.4s ease;
     }
+    header:hover {
+        background: linear-gradient(90deg, #003f8e 0%, #0056b3 50%, #003f8e 100%);
+    }
+
+    nav {
+        max-width: 1200px; /* Begrenzt die Navigationslinks in der Mitte */
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
 
     nav a {
-      margin: 0 20px;
+      margin: 0 25px; /* Größerer Abstand zwischen den Links */
       text-decoration: none;
-      color: #fff;
-      font-weight: 600; /* Halbfett */
-      font-size: 1.1em;
+      color: #ffffff; /* Weiß */
+      font-weight: 700; /* Fett */
+      font-size: 1.15em;
       padding: 5px 0;
       position: relative;
-      transition: color 0.3s ease, transform 0.2s; /* Für leichte Animation */
+      transition: color 0.3s ease, transform 0.2s;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); /* Leichter Textschatten */
     }
 
     nav a:hover {
-      color: #ffc107; /* Gelber Ton beim Hover */
-      transform: translateY(-2px); /* Leichter Anhebungseffekt */
+      color: #ffeb3b; /* Helles Gelb/Gold */
+      transform: translateY(-1px);
     }
 
+    /* Cooler Unterstrich-Effekt */
     nav a::after {
       content: '';
       position: absolute;
       width: 0;
       height: 3px;
-      background: #ffc107;
-      bottom: -5px;
-      left: 0;
+      background: #ffeb3b;
+      bottom: -8px; /* Tieferer Unterstrich */
+      left: 50%; /* Zentrieren */
+      transform: translateX(-50%);
       transition: width 0.3s ease-in-out;
+      border-radius: 2px;
     }
 
     nav a:hover::after,
@@ -60,54 +77,59 @@
     }
 
     nav a.active {
-      color: #ffc107;
+      color: #ffeb3b;
     }
 
     /* Inhaltsbereiche */
     .content {
       display: none;
-      padding: 40px; /* Mehr Polsterung */
+      padding: 50px; /* Mehr Polsterung */
       text-align: center;
       background-color: #ffffff;
-      margin: 30px auto;
-      max-width: 900px;
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      margin: 40px auto;
+      max-width: 950px;
+      border-radius: 12px; /* Stärkere Rundung */
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deutlicherer Schatten */
     }
     .content.active {
       display: block;
     }
     .content h1 {
         color: #007bff;
-        margin-bottom: 25px;
-        border-bottom: 2px solid #eee;
+        margin-bottom: 30px;
         padding-bottom: 10px;
+        border-bottom: 3px solid #f0f0f0;
+        font-size: 2.2em;
+    }
+    .content p {
+        font-size: 1.1em;
+        line-height: 1.6;
     }
 
     /* Buttons */
-    .content a.button { /* Neue allgemeine Klasse für Links/Buttons */
+    .content a.button { 
       font-weight: bold;
-      padding: 12px 25px;
+      padding: 14px 30px; 
       border: none;
-      border-radius: 50px; /* Pillenform */
-      font-size: 16px;
+      border-radius: 50px; 
+      font-size: 17px;
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
-      margin: 10px;
+      margin: 15px 10px;
       transition: background-color 0.3s ease, transform 0.2s;
       color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); 
     }
     .content a.button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
     .email-button {
-      background-color: #ffc107; /* Gelb (wie Unterstrich) */
+      background-color: #ffc107; 
     }
     .email-button:hover {
-      background-color: #e0b82f;
+      background-color: #e0a800; /* Dunkleres Gold */
     }
     .youtube-button {
       background-color: #ff0000;
@@ -121,392 +143,152 @@
     .whatsapp-button:hover {
       background-color: #1DA851;
     }
-    .social-media-link { /* Neuer Stil für den Social Media Link */
-        background-color: #3b5998; /* Blau für Social */
+    .social-media-link { 
+        background-color: #007bff;
     }
     .social-media-link:hover {
-        background-color: #2d4373;
+        background-color: #0056b3;
     }
 
     /* Bilder */
     .content img {
       max-width: 100%;
       height: auto;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin-bottom: 30px;
     }
 
     /* Stil für das Über uns Logo (für PC) */
     .ueber-uns-logo {
-      width: 200px;
+      width: 220px;
       float: right;
       margin-left: 30px;
       margin-bottom: 20px;
-      margin-top: 10px;
+      border: 3px solid #ffeb3b; /* Goldener Rahmen */
     }
 
-    /* Spezielle Stile für Über uns (aus Inline-Styles entfernt) */
-    #ueberuns h1 {
-        color: #007bff;
-        text-align: center;
-    }
+    /* Spezielle Stile für Über uns */
     #ueberuns p {
-        font-size: 1.25em; /* Etwas größere Schrift */
-        line-height: 1.6;
-        text-align: left; /* Text linksbündig */
-        margin-bottom: 15px;
+        font-size: 1.3em; 
+        line-height: 1.7;
+        text-align: left; 
     }
     #ueberuns .trenner {
-        color: #6c757d;
+        color: #adb5bd;
         text-align: center;
-        margin: 20px 0;
+        margin: 30px 0;
+        font-size: 1.5em;
         display: block;
     }
     #ueberuns .youtube-info {
         color: #28a745;
         text-align: center;
-        margin-top: 20px;
+        margin-top: 30px;
+        font-weight: bold;
     }
+    /* Ende Über uns Stile */
 
-    /* NEU: Bewertungsformular Stile */
+    /* Bewertungsformular Stile */
     .bewertungs-container {
-        max-width: 600px;
+        max-width: 650px;
         margin: 20px auto;
-        padding: 30px;
-        border: 1px solid #ddd;
+        padding: 40px;
+        border: 1px solid #e9ecef;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-        text-align: left; 
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-align: left;
     }
     .bewertungs-container h2, .bewertungs-container p {
         text-align: center;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
     input[type="email"], textarea {
         width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 2px solid #ccc;
+        border-radius: 6px;
         box-sizing: border-box;
     }
     .bewertungs-container button[type="submit"] {
         background-color: #28a745;
         color: white;
-        padding: 12px 20px;
+        padding: 12px 25px;
         border: none;
-        border-radius: 5px;
+        border-radius: 50px;
         cursor: pointer;
         font-size: 18px;
-        transition: background-color 0.3s;
         display: block; 
-        margin: 20px auto 0; 
+        margin: 25px auto 0;
+        transition: background-color 0.3s, transform 0.2s;
     }
     .bewertungs-container button[type="submit"]:hover {
         background-color: #218838;
+        transform: translateY(-2px);
     }
 
     /* Sterneingabe */
     .sterne-auswahl {
-        font-size: 35px; /* Größerer Stern */
+        font-size: 40px;
         cursor: pointer;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
         display: flex;
-        direction: rtl; /* Dreht die Reihenfolge */
+        direction: rtl; 
         justify-content: center;
     }
     .stern {
         color: #ccc; 
         transition: color 0.2s;
         line-height: 1;
-        padding: 0 3px;
+        padding: 0 4px;
     }
 
-    /* CSS-Logik für Stern-Farbe beim Hover und Klick (nutzt :hover und [data-rating]) */
+    /* CSS-Logik für Stern-Farbe beim Hover und Klick */
     .sterne-auswahl .stern:hover,
     .sterne-auswahl .stern:hover ~ .stern {
-        color: gold;
+        color: #ffc107; /* Helles Gold beim Hover */
     }
     .sterne-auswahl[data-rating="1"] .stern:nth-child(-n+1),
     .sterne-auswahl[data-rating="2"] .stern:nth-child(-n+2), 
     .sterne-auswahl[data-rating="3"] .stern:nth-child(-n+3),
     .sterne-auswahl[data-rating="4"] .stern:nth-child(-n+4),
     .sterne-auswahl[data-rating="5"] .stern:nth-child(-n+5) {
-        color: gold; 
+        color: #ffeb3b; /* Starkes Gold bei Auswahl */
     }
 
     /* Gespeicherte Bewertungen */
-    #bewertungen-liste {
-        margin-top: 20px;
-        display: flex;
-        flex-direction: column-reverse;
-        gap: 10px;
-    }
     .gespeicherte-bewertung {
         border: 1px solid #dee2e6;
-        padding: 15px;
+        padding: 18px;
         border-radius: 8px;
         background-color: #f8f9fa;
         text-align: left;
     }
     .bewertung-sterne {
-        color: gold;
-        font-size: 22px;
+        color: #ffeb3b;
+        font-size: 24px;
         margin-bottom: 5px;
         display: block;
     }
     .bewertung-email {
-        font-size: 0.9em;
+        font-size: 0.95em;
         color: #6c757d;
-        margin-bottom: 5px;
-    }
-    .gespeicherte-bewertung p {
-        margin: 5px 0 0;
-        line-height: 1.4;
-        font-size: 1em;
+        margin-bottom: 8px;
     }
     /* Ende Bewertungs-CSS */
-
-    /* Media Queries für responsive Anpassungen */
-    @media (max-width: 768px) {
-      nav a {
-        margin: 0 10px;
-        font-size: 0.9em;
-      }
-      .content {
-        padding: 20px;
-      }
-      .ueber-uns-logo {
-        float: none;
-        display: block;
-        margin: 20px auto;
-        width: 150px;
-      }
-      #ueberuns p {
-        font-size: 1.1em;
+    
+    /* Neuste Sektion */
+    #neuste div {
         text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      nav a {
-        margin: 0 5px;
-        font-size: 0.7em;
-        padding: 5px 0;
-      }
-      .content a.button {
-        padding: 10px 15px;
-        font-size: 14px;
-      }
-      .ueber-uns-logo {
-        width: 120px;
-      }
-      .bewertungs-container {
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    #neuste p {
+        background-color: #e9f0f9;
+        border-left: 5px solid #007bff;
         padding: 15px;
-      }
-      .sterne-auswahl {
-        font-size: 30px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <nav>
-      <a href="#" onclick="showSection('startseite')" id="link-startseite">Startseite</a>
-      <a href="#" onclick="showSection('Bewertungen')" id="link-Bewertungen">Bewertungen</a>
-      <a href="#" onclick="showSection('Kosten Übersicht')" id="link-Kosten Übersicht">Kosten Übersicht</a>
-      <a href="#" onclick="showSection('ueber uns')" id="link-ueber-uns">über uns</a>
-      <a href="#" onclick="showSection('kontakt')" id="link-kontakt">Kontakt</a>
-      <a href="#" onclick="showSection('neuste')" id="link-neuste">neuste</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="startseite" class="content active">
-      <img src="1000025512.jpg" alt="Startseite">
-      <h1>Herzlich Willkommen bei TECH SUPPORT & REPAIR</h1> 
-      <p>Ihr Partner für schnelle Fehlerbehebung und erstklassigen Service.</p>
-      
-      <a class="email-button button" href="mailto:techsupprt@gmx.de">E-Mail senden</a>
-      <a href="http://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button button">YouTube Kanal</a>
-    </section>
-
-        <section id="Bewertungen" class="content"> 
-      <h1>Kundenbewertungen</h1>
-      <div class="bewertungs-container">
-            <form id="bewertungsFormular">
-                <h2>Bewerte uns jetzt!</h2>
-                <label for="email">Deine E-Mail-Adresse:</label>
-                <input type="email" id="email" name="email" required placeholder="name@beispiel.de">
-
-                <p>Deine Bewertung (Sterne):</p>
-                <div class="sterne-auswahl" data-rating="0">
-                    <span class="stern" data-wert="5">⭐</span>
-                    <span class="stern" data-wert="4">⭐</span>
-                    <span class="stern" data-wert="3">⭐</span>
-                    <span class="stern" data-wert="2">⭐</span>
-                    <span class="stern" data-wert="1">⭐</span>
-                    <input type="hidden" id="bewertung" name="bewertung" value="0">
-                </div>
-
-                <label for="kommentar">Dein Kommentar:</label>
-                <textarea id="kommentar" name="kommentar" required rows="5" placeholder="Schreib hier deine Meinung..."></textarea>
-
-                <button type="submit">Abschicken 📩</button>
-            </form>
-            
-            <hr style="margin: 30px 0;">
-
-            <h2>Gespeicherte Bewertungen</h2>
-            <div id="bewertungen-liste">
-            </div>
-      </div>
-    </section>
-
-    <section id="Kosten Übersicht" class="content"> 
-      <h1>Kosten Übersicht</h1>
-      <p>Hier wurden noch keine Kosten eingetragen.</p>
-      <img src="placeholder_kosten.jpg" alt="Platzhalter Kosten">
-    </section>
-  
-    <section id="ueber uns" class="content" id="ueberuns">
-        <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo">
-      <h1>Über uns</h1>
-      <p>Fehlerbehebung und gute Zusammenarbeit sind die Eckpfeiler unserer Arbeit.</p>
-      <p class="trenner">---</p>
-      <p>Doch die Tätigkeiten gehen weit darüber hinaus. Auch bei der Einrichtung neuer Geräte übernehmen wir Systeminstallationen, richten Software ein und machen alles dafür, dass Ihr Computer optimal läuft. Egal ob Neuaufbau, Erweiterung oder Optimierung – Wir stehen Ihnen mit persönlicher Unterstützung zur Verfügung.</p>
-      <p class="youtube-info">In Zusammenarbeit mit dem YouTube Kanal **@Tbrasstracks** bieten wir auch kreative Trompeten Videos an.</p>
-       
-      <a href="https://tbrasstracks.github.io/Tbrasstracks/" target="_blank" class="social-media-link button">Social Media (Tbrasstracks)</a>
-    </section>
-
-    <section id="kontakt" class="content">
-       <h1>Kontaktinformationen</h1>
-      <img src="1000025513.jpg" alt="Kontakt">
-      <p>Sie erreichen uns am besten per E-Mail oder über unsere Social-Media-Kanäle.</p>
-      <a class="email-button button" href="mailto:techsupprt@gmx.de">E-Mail senden</a>
-      <a href="tel:+49123456789" class="whatsapp-button button">WhatsApp Kontakt (Platzhalter)</a>
-    </section>
-
-    <section id="neuste" class="content">
-      <h1>Neuste Angebote & Updates</h1>
-      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
-        <p>✅ **Windows 11 Installation** auf Geräten, die noch die vollen Mindestanforderungen erfüllen.</p>
-        <p>✅ **Kompletter 2-in-1 PC Scan** mit Entfernung beschädigter Dateien.</p>
-        <p>✅ **Gaming-Tastatur Reparatur:** Leertaste repariert und Click-Sound gedämmt.</p>
-      </div>
-    </section>
-  </main>
-
-    <script>
-    // Funktion für die Navigation
-    function showSection(id) {
-      document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
-      
-      const linkId = (id === 'ueber uns') ? 'link-ueber-uns' : 'link-' + id;
-      document.getElementById(linkId).classList.add('active');
-    }
-
-    // --- Bewertungs-Logik (Korrekturen angewendet) ---
-    const ladeBewertungen = () => {
-        const bewertungenListe = document.getElementById('bewertungen-liste');
-        const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
-        if (bewertungenListe) { 
-            bewertungenListe.innerHTML = ''; 
-            
-            bewertungen.forEach(bew => {
-                const div = document.createElement('div');
-                div.className = 'gespeicherte-bewertung';
-                
-                // Korrigierte Logik: Zeigt gefüllte Sterne (⭐) an
-                const sterneAnzeige = '⭐'.repeat(bew.sterne);
-                
-                div.innerHTML = `
-                    <span class="bewertung-sterne">${sterneAnzeige}</span>
-                    <div class="bewertung-email">E-Mail: ${bew.email}</div>
-                    <p><strong>Kommentar:</strong> ${bew.kommentar}</p>
-                `;
-                bewertungenListe.appendChild(div); 
-            });
-        }
-    };
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Navigation starten
-        showSection('startseite');
-        
-        // --- Sterne Logik initialisieren ---
-        const bewertungsFormular = document.getElementById('bewertungsFormular');
-        const sterneAuswahl = document.querySelector('.sterne-auswahl');
-        const sterne = document.querySelectorAll('.stern');
-        const bewertungInput = document.getElementById('bewertung');
-
-        if (bewertungsFormular) {
-            // Klick-Logik
-            sterne.forEach(stern => {
-                stern.addEventListener('click', () => {
-                    const wert = stern.dataset.wert;
-                    bewertungInput.value = wert;
-                    sterneAuswahl.setAttribute('data-rating', wert); // WICHTIG: Setzt das Attribut für das CSS
-                });
-
-                // Hover-Logik: Entfernt die temporären Stile, da das CSS das jetzt macht
-                stern.addEventListener('mouseover', () => {
-                    sterneAuswahl.setAttribute('data-hover', stern.dataset.wert);
-                });
-                stern.addEventListener('mouseout', () => {
-                    sterneAuswahl.removeAttribute('data-hover');
-                });
-            });
-            
-            // Formular Absenden
-            bewertungsFormular.addEventListener('submit', (e) => {
-                e.preventDefault();
-                
-                const email = document.getElementById('email').value;
-                const sterneWert = parseInt(bewertungInput.value);
-                const kommentar = document.getElementById('kommentar').value;
-
-                if (sterneWert === 0) {
-                     alert("Bitte wähle eine Stern-Bewertung aus.");
-                     return;
-                }
-
-                const neueBewertung = {
-                    email: email,
-                    sterne: sterneWert,
-                    kommentar: kommentar,
-                    datum: new Date().toLocaleDateString('de-DE')
-                };
-                
-                // Speichern
-                const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
-                bewertungen.push(neueBewertung);
-                localStorage.setItem('webBewertungen', JSON.stringify(bewertungen));
-                
-                // E-Mail-Versand (Simulation)
-                const mailBody = `Sterne: ${sterneWert}\nE-Mail: ${email}\nKommentar: ${kommentar}`;
-                const mailLink = `mailto:techsupprt@gmx.de?subject=Neue Bewertung von der Website&body=${encodeURIComponent(mailBody)}`;
-                
-                window.open(mailLink, '_blank'); 
-
-                // UI aktualisieren
-                bewertungsFormular.reset();
-                sterneAuswahl.setAttribute('data-rating', '0'); 
-                bewertungInput.value = '0';
-                ladeBewertungen();
-
-                alert("Bewertung wurde gespeichert und Versand simuliert.");
-            });
-        }
-        
-        // Bewertungen beim Start laden
-        ladeBewertungen();
-    });
-  </script>
-</body>
-</html>
+        margin: 15px 0;
+        border-radius: 6px;
+        text-align: left;
+        font-weight:
