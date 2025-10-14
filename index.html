@@ -198,14 +198,108 @@
     </section>
 
     <section id="Bewertungen" class="content">
-      <h1>Kundenbewertungen</h1>
-      <!-- Hier bleibt dein komplettes Bewertungsformular und Script wie gehabt -->
-      <!-- Bitte den gesamten Bewertungsformular-HTML und Script aus deinem Original einfügen -->
-      <!-- Beispiel: -->
-      <div class="bewertungs-container">
-        <!-- Formular und Bewertungen ... -->
-      </div>
-    </section>
+      document.addEventListener('DOMContentLoaded', () => {
+  const bewertungsFormular = document.getElementById('bewertungsFormular');
+  const sterneAuswahl = document.querySelector('.sterne-auswahl');
+  const sterne = document.querySelectorAll('.stern');
+  const bewertungInput = document.getElementById('bewertung');
+  const bewertungenListe = document.getElementById('bewertungen-liste');
+
+  // Funktion zum Anzeigen der Bewertungen aus localStorage
+  const ladeBewertungen = () => {
+    const bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
+    bewertungenListe.innerHTML = '';
+
+    bewertungen.forEach(bew => {
+      const div = document.createElement('div');
+      div.className = 'gespeicherte-bewertung';
+      const sterneAnzeige = '⭐️'.repeat(bew.sterne);
+      div.innerHTML = `
+        <div class="bewertung-sterne">${sterneAnzeige}</div>
+        <div class="bewertung-email">E-Mail: ${bew.email}</div>
+        <p><strong>Kommentar:</strong> ${bew.kommentar}</p>
+      `;
+      bewertungenListe.appendChild(div);
+    });
+  };
+
+  // Max Anzahl Bewertungen
+  const MAX_BEWERTUNGEN = 100;
+
+  // Sterne Klick Event
+  sterne.forEach(stern => {
+    stern.addEventListener('click', () => {
+      const wert = stern.dataset.wert;
+      bewertungInput.value = wert;
+      sterneAuswahl.setAttribute('data-rating', wert);
+    });
+  });
+
+  // Formular abschicken
+  bewertungsFormular.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById('email').value.trim();
+    const sterneWert = parseInt(bewertungInput.value, 10);
+    const kommentar = document.getElementById('kommentar').value.trim();
+
+    if (sterneWert === 0) {
+      // Statt alert ein kleines visuelles Feedback oder console.warn
+      console.warn('Bitte wähle eine Stern-Bewertung aus.');
+      return;
+    }
+
+    if (!email) {
+      console.warn('Bitte gib eine gültige E-Mail-Adresse ein.');
+      return;
+    }
+
+    const neueBewertung = {
+      email,
+      sterne: sterneWert,
+      kommentar,
+      datum: new Date().toLocaleDateString('de-DE')
+    };
+
+    let bewertungen = JSON.parse(localStorage.getItem('webBewertungen')) || [];
+    bewertungen.push(neueBewertung);
+    if (bewertungen.length > MAX_BEWERTUNGEN) {
+      bewertungen.shift();
+    }
+    localStorage.setItem('webBewertungen', JSON.stringify(bewertungen));
+
+    // mailto-Link: Statt window.open direkt, besser kurz Timeout, damit es nicht blockiert
+    const mailBody = `Sterne: ${sterneWert}\nE-Mail: ${email}\nKommentar: ${kommentar}`;
+    const mailLink = `mailto:techsupprt@gmx.de?subject=Neue Bewertung von der Website&body=${encodeURIComponent(mailBody)}`;
+    setTimeout(() => {
+      window.open(mailLink, '_blank', 'noopener,noreferrer');
+    }, 100); // kurze Verzögerung, damit event handler nicht blockiert wird
+
+    bewertungsFormular.reset();
+    sterneAuswahl.setAttribute('data-rating', '0');
+    bewertungInput.value = '0';
+    ladeBewertungen();
+
+    // Statt alert eine nicht-blockierende Info (kann noch UI Message ergänzt werden)
+    console.info(`Bewertung wurde gespeichert. Es werden nur die letzten ${MAX_BEWERTUNGEN} gespeichert.`);
+  });
+
+  ladeBewertungen();
+
+  // Navigation: Funktion zum Umschalten der Sections
+  function showSection(id) {
+    document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
+    const section = document.getElementById(id);
+    if(section) section.classList.add('active');
+
+    document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+    const link = document.getElementById('link-' + id);
+    if(link) link.classList.add('active');
+  }
+
+  // Global nur für Navigation (du kannst das anpassen oder kapseln)
+  window.showSection = showSection;
+});
 
     <section id="KostenUebersicht" class="content">
       <h1>Kosten</h1>
@@ -266,3 +360,4 @@
   </script>
 </body>
 </html>
+
