@@ -216,8 +216,14 @@
         return;
       }
       
-      // Hier kommt dein Mailversand-Trigger (momentan nur Simulation)
-      alert('Nachricht wird gesendet:\n\n' + text);
+      // Hier kommt dein Mailversand-Trigger
+const targetEmail = 'techsupprt@gmx.de'; // 👈 TRAGEN SIE HIER IHRE E-MAIL EIN
+const subject = 'Neue Bewertung'; // Betreff der E-Mail
+
+const encodedText = encodeURIComponent(text);
+
+// Öffnet das E-Mail-Programm des Nutzers mit dem Text als Body
+window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodedText}`;
       
       // Optional: Formular zurücksetzen
       input.value = '';
@@ -285,6 +291,7 @@
   </script>
 </body>
 </html>
+
 
 
 
