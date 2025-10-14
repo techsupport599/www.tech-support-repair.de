@@ -198,8 +198,32 @@
     </section>
 
     <section id="Bewertungen" class="content">
-      <h1>Bewertungen</h1>
-      <p>In Bearbeitung.</p>
+      <!-- Textarea und Button -->
+<div id="mailForm" style="max-width: 300px; margin: 1em 0;">
+  <textarea id="mailInput" rows="4" style="width:100%;" placeholder="Hier deine Nachricht..."></textarea>
+  <button id="mailSendBtn" style="margin-top:0.5em; cursor:pointer;">⬆ Abschicken</button>
+</div>
+
+<script>
+  (function(){
+    const btn = document.getElementById('mailSendBtn');
+    const input = document.getElementById('mailInput');
+    
+    btn.addEventListener('click', function() {
+      const text = input.value.trim();
+      if (!text) {
+        alert('Bitte zuerst etwas in das Feld schreiben.');
+        return;
+      }
+      
+      // Hier kommt dein Mailversand-Trigger (momentan nur Simulation)
+      alert('Nachricht wird gesendet:\n\n' + text);
+      
+      // Optional: Formular zurücksetzen
+      input.value = '';
+    });
+  })();
+</script>
     </section>
       
     <section id="KostenUebersicht" class="content">
@@ -261,6 +285,7 @@
   </script>
 </body>
 </html>
+
 
 
 
