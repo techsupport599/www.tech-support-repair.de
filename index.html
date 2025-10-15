@@ -188,6 +188,45 @@
   <textarea id="mailInput" placeholder="Schreib hier deine Bewertung..." required></textarea>
   <button id="mailSendBtn">☑️</button>
 </div>
+<style>
+/* Größere E-Mail- und Bewertungsfelder */
+#userEmail {
+  width: 150%;        /* Feld ist so breit wie der verfügbare Platz */
+height: 65px;       /* Höhe des Feldes (wie "wie groß" es aussieht) */
+font-size: 30px;    /* Größe der Schrift im Feld */
+padding: 10px;       /* Abstand zwischen Text und Feldrand (innen) */
+border-radius: 7px; /* Ecken werden leicht abgerundet */
+border: 3px solid #ccc; /* dünner grauer Rahmen um das Feld */
+
+}
+
+#mailInput {
+  width: 200%;
+  height: 300px;
+  font-size: 30px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 3px solid #ccc;
+  resize: vertical;
+  margin-bottom: 25px;
+}
+
+#mailSendBtn {
+  background-color: #ffd43b;
+  color: gelb;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#mailSendBtn:hover {
+  background-color: #e0b82f;
+}
+</style>
 
 <script>
 (function(){
@@ -320,6 +359,7 @@ der Mindestanforderungen</p> <br>
   </script>
 </body>
 </html>
+
 
 
 
