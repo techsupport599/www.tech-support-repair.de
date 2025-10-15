@@ -181,40 +181,65 @@
       <a href="http://www.youtube.com/@TechSupport2live" target="_blank" class="youtube-button">YouTube</a>
     </section>
 
-    <section id="Bewertungen" class="content">
-      <!-- Textarea und Button -->
-<div id="mailForm" style="max-width: 300px; margin: 2em 0;">
-  <textarea id="mailInput" rows="8" style="width:300px;" placeholder="schreibe deine bewertung ⭐️"></textarea>
-  <button id="mailSendBtn" style="margin-top:0.7em; cursor:pointer;">⬆ Abschicken</button>
+    <div id="bewertung-section" class="bewertung-container">
+  <h2>Bewertung abgeben ⭐</h2>
+  <input type="email" id="userEmail" placeholder="Deine E-Mail-Adresse" required />
+  <textarea id="mailInput" placeholder="Schreib hier deine Bewertung..." required></textarea>
+  <button id="mailSendBtn">Abschicken</button>
+  <p id="mailHinweis" style="font-size: 0.9em; color: #777; margin-top: 8px;">
+    💡 Deine E-Mail wird automatisch in deinem E-Mail-Programm oder im Browser geöffnet – je nach Anbieter.
+  </p>
 </div>
 
 <script>
-  (function(){
-    const btn = document.getElementById('mailSendBtn');
-    const input = document.getElementById('mailInput');
-    
-    btn.addEventListener('click', function() {
-      const text = input.value.trim();
-      if (!text) {
-        alert('Bitte schreibe erst deine Bewertung.');
-        return;
-      }
-      
-      // Hier kommt dein Mailversand-Trigger
-const targetEmail = 'techsupprt@gmx.de'; //
-const subject = 'Neue Bewertung ⭐️'; //
+(function(){
+  const btn = document.getElementById('mailSendBtn');
+  const input = document.getElementById('mailInput');
+  const emailField = document.getElementById('userEmail');
 
-const encodedText = encodeURIComponent(text);
+  const targetEmail = 'techsupprt@gmx.de';
+  const subject = 'Neue Bewertung ⭐️';
 
-// Öffnet das E-Mail-Programm des Nutzers mit dem Text als Body
-window.location.href = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodedText}`;
-      
-      // Optional: Formular zurücksetzen
-      input.value = '';
-    });
-  })();
+  btn.addEventListener('click', function() {
+    const text = input.value.trim();
+    const userEmail = emailField.value.trim();
+
+    if (!userEmail || !text) {
+      alert('Bitte gib deine E-Mail-Adresse und eine Bewertung ein.');
+      return;
+    }
+
+    const domain = userEmail.split('@').pop()?.toLowerCase() || '';
+    const encodedTo = encodeURIComponent(targetEmail);
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(
+      'Bewertung von: ' + userEmail + '\n\n' + text
+    );
+
+    // Webmail-Links
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedTo}&su=${encodedSubject}&body=${encodedBody}`;
+    const outlookUrl = `https://outlook.live.com/owa/?path=/mail/action/compose&to=${encodedTo}&subject=${encodedSubject}&body=${encodedBody}`;
+    const gmxUrl = `https://mail.gmx.net/mail/compose?to=${encodedTo}&subject=${encodedSubject}&body=${encodedBody}`;
+
+    let openUrl = '';
+
+    if (domain.endsWith('gmail.com')) {
+      openUrl = gmailUrl;
+    } else if (domain.endsWith('outlook.com') || domain.endsWith('hotmail.com') || domain.endsWith('live.com')) {
+      openUrl = outlookUrl;
+    } else if (domain.endsWith('gmx.de') || domain.endsWith('gmx.net')) {
+      openUrl = gmxUrl;
+    } else {
+      // Fallback: Mail-App oder Standard-Mailprogramm
+      openUrl = `mailto:${targetEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+    }
+
+    window.open(openUrl, '_blank');
+    input.value = '';
+  });
+})();
 </script>
-    </section>
+
       
     <section id="KostenUebersicht" class="content">
       <h1 style="color:blue;text-align: center;">Preise</h1>
@@ -296,6 +321,7 @@ der Mindestanforderungen</p> <br>
   </script>
 </body>
 </html>
+
 
 
 
