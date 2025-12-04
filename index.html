@@ -30,32 +30,19 @@
     }
 
     nav a {
-  margin: 0 20px;
-  text-decoration: none;
-  color: #00FF7F; /* Hier wurde die Farbe geändert */
-  font-weight: bold;
-  font-size: 1.1em;
-  padding: 5px 0;
-  position: relative;
-  transition: color 0.3s ease;
-  cursor: pointer;
-    }
+  /* ... */
+  color: #00FF7F; /* Hellgrün */
+  /* ... */
+}
+
+nav a:hover {
+  color: #800080; /* Lila */
+}
+
+nav a.active {
+  color: #800080; /* Lila */
+}
     
-
-    nav a:hover {
-      color: #ffd43b;
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 3px;
-      background: #ffd43b;
-      bottom: -5px;
-      left: 0;
-      transition: width 0.3s ease-in-out;
-    }
 
     nav a:hover::after,
     nav a.active::after {
@@ -366,6 +353,7 @@ der Mindestanforderungen</p> <br>
   </script>
 </body>
 </html>
+
 
 
 
