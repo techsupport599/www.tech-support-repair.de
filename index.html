@@ -28,27 +28,28 @@
     header:hover {
       background: #00AAAA;
     }
-
-    nav a {
-  /* ... */
-  color: #00FF7F; /* Hellgrün */
-  /* ... */
-}
-
-nav a:hover {
-  color: #800080; /* Lila */
-}
-
-nav a.active {
-  color: #800080; /* Lila */
-}
     
 
     nav a:hover::after,
     nav a.active::after {
       width: 100%;
     }
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  background: #800080; /* Lila */
+  bottom: -5px;
+  left: 0;
+  transition: width 0.3s ease-in-out;
+}
 
+nav a:hover::after,
+nav a.active::after {
+  width: 100%;
+}
+    
     nav a.active {
       color: #ffd43b;
     }
@@ -353,6 +354,7 @@ der Mindestanforderungen</p> <br>
   </script>
 </body>
 </html>
+
 
 
 
