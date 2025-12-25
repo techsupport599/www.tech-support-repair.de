@@ -4,13 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IT Solutions & Fix</title>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #000000,#0000Ff);
-      background-attachment: fixed;
+      background-color: linear-gradient(to right, #000000,#0000Ff);
     }
     
     header {
@@ -32,17 +30,18 @@
     }
 
     nav a {
-      margin: 0 20px;
-      text-decoration: none;
-      color: #00FF7F;
-      font-weight: bold;
-      font-size: 1.1em;
-      padding: 5px 0;
-      position: relative;
-      transition: color 0.3s ease;
-      cursor: pointer;
+  margin: 0 20px;
+  text-decoration: none;
+  color: #00FF7F; /* Hier wurde die Farbe geändert */
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s ease;
+  cursor: pointer;
     }
     
+
     nav a:hover {
       color: #ffd43b;
     }
@@ -80,45 +79,45 @@
     .content.active {
       display: block;
     }
-    .email-button {
-      background-color: #FF0000;
-      border: 2px solid #FF0000;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
+     .email-button {
+  background-color: #FF0000;
+  border: 2px solid #FF0000;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  display: inline-block;
     }
     
-    .Werbespot-button {
-      background-color: blue;
-      border: 2px solid #ADD8E6;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-    }
+     .Werbespot-button {
+  background-color: blue;
+  border: 2px solid #ADD8E6;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  display: inline-block;
+}
     
     .instagram-btn {
-      background-color: #FFB6C1;
-      border: 2px solid #FF69B4;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-    }
+  background-color: #FFB6C1;
+  border: 2px solid #FF69B4;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  display: inline-block;
+}
 
-    .youtube-btn {
-      background-color: #FF0000;
-      border: 2px solid #B20000;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-    }
+.youtube-btn {
+  background-color: #FF0000;
+  border: 2px solid #B20000;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 8px;
+  display: inline-block;
+}
     
     .content img {
       max-width: 100%;
@@ -146,6 +145,23 @@
         display: block;
         margin: 20px auto;
         width: 150px;
+      }
+      #ueberuns p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav a {
+        margin: 0 5px;
+        font-size: 0.8em;
+      }
+      .email-button, .Werbespot-button, {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+      .ueber-uns-logo {
+        width: 120px;
       }
     }
   </style>
@@ -335,4 +351,4 @@ der Mindestanforderungen</p><br><br>
     });
   </script>
 </body>
-  </html>
+      </html>
