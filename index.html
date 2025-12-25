@@ -148,40 +148,6 @@
         width: 150px;
       }
     }
-
-    /* Bewertungen Styling */
-    #userEmail {
-      width: 90%;
-      height: 55px;
-      font-size: 20px;
-      padding: 10px;
-      border-radius: 7px;
-      border: 3px solid #ccc;
-      margin-bottom: 10px;
-    }
-
-    #mailInput {
-      width: 90%;
-      height: 200px;
-      font-size: 20px;
-      padding: 10px;
-      border-radius: 7px;
-      border: 3px solid #ccc;
-      resize: vertical;
-      margin-bottom: 25px;
-    }
-
-    #mailSendBtn {
-      background-color: #ffd43b;
-      color: black;
-      font-weight: bold;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 6px;
-      font-size: 20px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
   </style>
 </head>
 <body>
@@ -198,46 +164,163 @@
   <main>
     <section id="startseite" class="content active">
       <img src="1765905326463.jpg" alt="Startseite" />
-      <h1 style="font-family: 'Caveat', cursive; color: #FFC0CB; font-size: 3em; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 3px 3px 5px rgba(0,0,0,0.5);">Herzlich Willkommen</h1>
+      <h1><p style= "text-shadow -2px"; style="color:#FFC0CB;text-align: center;">Herzlich Willkommen</h1>
       <br />
       <a class="email-button" href="mailto:itsolutionsandfix@gmail.com">E-Mail senden</a>
       <a href="https://youtu.be/c3yf4ilVhms?si=sjQN7r67RlKFZHhp" target="_blank" class="Werbespot-button">Werbespot</a>
     </section>
 
     <section id="Bewertungen" class="content">
-      <h2 style="color:#65FE08;">Bewertung abgeben ⭐</h2>
-      <input type="email" id="userEmail" placeholder="Deine E-Mail-Adresse" required />
-      <textarea id="mailInput" placeholder="Schreib hier deine Bewertung..." required></textarea><br>
-      <button id="mailSendBtn">☑️</button>
-      <p style="color:#FF10F0; margin-top: 20px;">💡 Bitte beachten: Loggen Sie sich erst bei Ihrem E-Mail-Provider ein.</p>
+    <div id="bewertung-section" class="bewertung-container">
+  <h2><p style="color:#65FE08;text-align: center;">Bewertung abgeben ⭐</h2>
+  <input type="email" id="userEmail" placeholder="Deine E-Mail-Adresse" required />
+  <textarea id="mailInput" placeholder="Schreib hier deine Bewertung..." required></textarea>
+  <button id="mailSendBtn">☑️</button
+  <p style="color:#FF10F0;text-align: center;">💡bitte beachten:<br>
+  <p style="color:#FFC0CB.;text-align: center">Sie müssen sich zuerst im Web bei ihrer entsprechender <br>
+    email anmelden um eine Bewertung abzugeben: <a class="gmail" href="https://mail.google.com/mail/">gmail</a>
+      <a href="https://www.gmx.net/" target="_blank" class="gmx">gmx</a><br>
+    (lassen sie dan das entsprechende email tab offen und kehren sie zu diser Seite zurück)
+</div>
+<style>
+/* Größere E-Mail- und Bewertungsfelder */
+#userEmail {
+  width: 90%;        /* Feld ist so breit wie der verfügbare Platz */
+height: 55px;       /* Höhe des Feldes (wie "wie groß" es aussieht) */
+font-size: 20px;    /* Größe der Schrift im Feld */
+padding: 10px;       /* Abstand zwischen Text und Feldrand (innen) */
+border-radius: 7px; /* Ecken werden leicht abgerundet */
+border: 3px solid #ccc; /* dünner grauer Rahmen um das Feld */
+
+}
+
+#mailInput {
+  width: 90%;
+  height: 300px;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 7px;
+  border: 3px solid #ccc;
+  resize: vertical;
+  margin-bottom: 25px;
+}
+
+#mailSendBtn {
+  background-color: #ffd43b;
+  color: gelb;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#mailSendBtn:hover {
+  background-color: #e0b82f;
+}
+</style>
+
+<script>
+(function(){
+  const btn = document.getElementById('mailSendBtn');
+  const input = document.getElementById('mailInput');
+  const emailField = document.getElementById('userEmail');
+
+  const targetEmail = 'itsolutionsandfix@gmail.com';
+  const subject = 'Neue Bewertung ⭐️';
+
+  btn.addEventListener('click', function() {
+    const text = input.value.trim();
+    const userEmail = emailField.value.trim();
+
+    if (!userEmail || !text) {
+      alert('Bitte gib eine email an und bewerte uns.');
+      return;
+    }
+
+    const domain = userEmail.split('@').pop()?.toLowerCase() || '';
+    const encodedTo = encodeURIComponent(targetEmail);
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(
+      'Bewertung von: ' + userEmail + '\n\n' + text
+    );
+
+    // Webmail-Links
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedTo}&su=${encodedSubject}&body=${encodedBody}`;
+    const outlookUrl = `https://outlook.live.com/owa/?path=/mail/action/compose&to=${encodedTo}&subject=${encodedSubject}&body=${encodedBody}`;
+    const gmxUrl = `https://mail.gmx.net/mail/compose?to=${encodedTo}&subject=${encodedSubject}&body=${encodedBody}`;
+
+    let openUrl = '';
+
+    if (domain.endsWith('gmail.com')) {
+      openUrl = gmailUrl;
+    } else if (domain.endsWith('outlook.com') || domain.endsWith('hotmail.com') || domain.endsWith('live.com')) {
+      openUrl = outlookUrl;
+    } else if (domain.endsWith('gmx.de') || domain.endsWith('gmx.net')) {
+      openUrl = gmxUrl;
+    } else {
+      // Fallback: Mail-App oder Standard-Mailprogramm
+      openUrl = `mailto:${targetEmail}?subject=${encodedSubject}&body=${encodedBody}`;
+    }
+
+    window.open(openUrl, '_blank');
+    input.value = '';
+  });
+})();
+</script>
     </section>
 
+      
     <section id="Service-Angebote" class="content">
-      <h1 style="color:#65FE08;">Übersicht</h1>
-      <p style="font-weight: bold; color:#FFC0CB;">Kosten werden per Mail vereinbart</p>
-      <div style="font-size: 20px; color: white;">
-        <p>Windows 11 Installation auf Altgeräten</p>
-        <p>Systemscan & Fehlerbehebung</p>
-        <p>Tastatur- & Mausreparatur</p>
-        <p>Komplette Systeminspektion</p>
-      </div>
+      <h1 style="color:#65FE08;text-align: center;">Übersicht</h1>
+      <p style="font-size: 25px;">
+        <p style="font-weight: bold;color:#FFC0CB;text-align: center;">Kosten werden per mail geschrieben<p><br></p> <br>
+<p style="font-size: 25px;">
+        <br /><br />Windows 11 Installation bei Geräten ohne Vervollständigung<br>
+der Mindestanforderungen</p><br><br>
+<p style="font-size: 25px;">
+        <br /><br />2-in-1 PC Scan mit Entfernung von beschädigter Dateien<br></p><br>
+  <p style="font-size: 25px;">
+        <br /><br />Gaming Tastatur Reperatur der Leertaste + Dimmung<br></p><br>
+  <p style="font-size: 25px;">
+        <br /><br />Komplette Computer Systeminspektion + Intigration<br></p><br>
+  <p style="font-size: 25px;">
+        <br /><br />PC Zurücksetzung neuinstailation und Neuaufbau<br></p><br>
+  <p style="font-size: 25px;">
+        <br /><br />Maustasten Reparatur<br></p><br>
+        <p style="color:#E6E6FA;text-align: center;">Natürlich wird sich auch um Aufträge gekümmert die
+    nicht den genannten Aufträgen entsprechen❗<p><br></p> <br>
     </section>
+    
 
     <section id="ueberuns" class="content">
-      <h1 style="color:#65FE08;">Über uns</h1>
-      <p style="font-size: 22px; color:#FFE4E1;">
-        Wir bieten professionelle IT-Hilfe und Optimierung für Ihre Geräte.
+      <h1 style="color:#65FE08;text-align: center;">Über uns</h1>
+      <p style="font-size: 25px;"><br /><br />Fehlerbehebung und gute Zusammenarbeit</p>
+      <p style="font-size: 25px;"><br />___________</p><br />
+      <p style="color:#FFE4E1;font-size: 25px;">
+        Doch die Tätigkeiten gehen weit darüber hinaus.<br />
+        Auch bei der Einrichtung neuer Geräte übernehmen wir Systeminstallationen,<br />
+        richten Software ein und machen alles dafür, dass ihr Computer optimal läuft. Also ob Neuaufbau,<br />
+        Erweiterung oder Optimierung – Wir stehen Ihnen mit<br />
+        persönlicher Unterstützung zur Verfügung.
       </p>
+      <br /><br />
+      <p style="font-size: 25px; color: #FFC0CB;">
+        In Arbeit mit dem YouTube Kanal<br />
+        @Tbrasstracks bieten wir auch<br />
+        kreative Trompeten Videos<br />
+      </p>
+      <a href="https://www.instagram.com/tbrasstracks?igsh=MXd1MzI3d3Bka2pqYQ==" target="_blank" class="instagram-btn">Instagram</a>
+      <a href="https://youtube.com/@tbrasstracks?si=6t80yVRvs1cRSYDc" target="_blank" class="youtube-btn">YouTube</a>
       <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo" />
-      <a href="https://www.instagram.com/tbrasstracks" target="_blank" class="instagram-btn">Instagram</a>
-      <a href="https://youtube.com/@tbrasstracks" target="_blank" class="youtube-btn">YouTube</a>
     </section>
 
     <section id="kontakt" class="content">
-      <h1 style="color:#65FE08;">Kontaktinformationen</h1>
+      <h1 style="color:#65FE08;text-align: center;">Kontaktinformationen</h1>
       <img src="1000025513~2.jpg" alt="Kontakt" />
     </section>
-  </main>
 
   <script>
     function showSection(id) {
@@ -247,15 +330,9 @@
       document.getElementById('link-' + id).classList.add('active');
     }
 
-    // Mail-Logik für Bewertungen
-    document.getElementById('mailSendBtn')?.addEventListener('click', function() {
-      const text = document.getElementById('mailInput').value;
-      const mail = document.getElementById('userEmail').value;
-      if(text && mail) {
-        window.location.href = `mailto:itsolutionsandfix@gmail.com?subject=Bewertung&body=${encodeURIComponent(text)}`;
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('startseite');
     });
   </script>
 </body>
   </html>
-  
