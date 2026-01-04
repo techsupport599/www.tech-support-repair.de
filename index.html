@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IT Solutions & Fix</title>
   <style>
-    /* BASICS */
+    /* Verhindert seitliches Wischen */
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #000000, #0000Ff);
-      background-attachment: fixed;
+      background-color: linear-gradient(to right, #000000,#0000Ff);
     }
     
-    /* LOADER ANIMATION */
+    /* LOADER STYLES */
     #loader {
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
@@ -36,7 +41,6 @@
     }
 
     @keyframes spin { 100% { transform: rotate(360deg); } }
-
     @keyframes colorChange {
       50% { border-top-color: #FF0000; border-bottom-color: #FFFF00; }
     }
@@ -48,7 +52,7 @@
       color: white;
       opacity: 0;
       transform: scale(0.5);
-      animation: textAppear 3s forwards 2s;
+      animation: textAppear 3.5s forwards 1.5s;
     }
 
     @keyframes textAppear {
@@ -68,11 +72,10 @@
     }
 
     @keyframes burn {
-      0% { opacity: 0.8; clip-path: circle(0% at 50% 50%); }
+      0% { opacity: 0.9; clip-path: circle(0% at 50% 50%); }
       100% { opacity: 0; clip-path: circle(150% at 50% 50%); }
     }
 
-    /* HEADER & NAV */
     header {
       background: #00AAAA;
       display: flex;
@@ -84,6 +87,11 @@
       z-index: 1000;
       border-bottom-left-radius: 15px;
       border-bottom-right-radius: 15px;
+      transition: background 0.3s ease;
+    }
+
+    header:hover {
+      background: #00AAAA;
     }
 
     nav a {
@@ -92,7 +100,14 @@
       color: #00FF7F;
       font-weight: bold;
       font-size: 1.1em;
+      padding: 5px 0;
+      position: relative;
+      transition: color 0.3s ease;
       cursor: pointer;
+    }
+    
+    nav a:hover {
+      color: #ffd43b;
     }
 
     .content {
@@ -103,31 +118,105 @@
       margin: 20px auto;
       max-width: 900px;
       border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+    .content.active {
+      display: block;
+    }
+    .email-button {
+      background-color: #FF0000;
+      border: 2px solid #FF0000;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    
+    .Werbespot-button {
+      background-color: blue;
+      border: 2px solid #ADD8E6;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    
+    .instagram-btn {
+      background-color: #FFB6C1;
+      border: 2px solid #FF69B4;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
     }
 
-    .content.active { display: block; }
+    .youtube-btn {
+      background-color: #FF0000;
+      border: 2px solid #B20000;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+    }
+    
+    .content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .ueber-uns-logo {
+      width: 200px;
+      float: right;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
 
-    .email-button { background-color: #FF0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; display: inline-block; }
-    .Werbespot-button { background-color: blue; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; display: inline-block; border: 2px solid #ADD8E6; }
-    .instagram-btn { background-color: #FFB6C1; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; display: inline-block; }
-    .youtube-btn { background-color: #FF0000; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; display: inline-block; }
+    @media (max-width: 768px) {
+      nav a {
+        margin: 0 10px;
+        font-size: 0.9em;
+      }
+      .content {
+        padding: 15px;
+      }
+      .ueber-uns-logo {
+        float: none;
+        display: block;
+        margin: 20px auto;
+        width: 150px;
+      }
+      #ueberuns p {
+        font-size: 18px;
+      }
+    }
 
-    /* EMAIL FIELDS */
-    #userEmail, #mailInput { width: 90%; border-radius: 7px; border: 3px solid #ccc; padding: 10px; font-size: 20px; }
-    #userEmail { height: 55px; }
-    #mailInput { height: 300px; margin-bottom: 25px; }
-    #mailSendBtn { background-color: #ffd43b; font-size: 20px; padding: 10px 20px; border: none; cursor: pointer; border-radius: 6px; }
-
-    .ueber-uns-logo { width: 200px; float: right; margin-left: 20px; }
+    @media (max-width: 480px) {
+      nav a {
+        margin: 0 5px;
+        font-size: 0.8em;
+      }
+      .email-button, .Werbespot-button {
+        padding: 8px 15px;
+        font-size: 14px;
+      }
+      .ueber-uns-logo {
+        width: 120px;
+      }
+    }
   </style>
 </head>
 <body>
-
   <div id="loader">
     <div class="spinner"></div>
     <div class="loader-text">IT Solutions & Fix</div>
     <div class="fire-wind"></div>
   </div>
+
   <header>
     <nav>
       <a href="#" onclick="showSection('startseite')" id="link-startseite">Startseite</a>
@@ -141,41 +230,96 @@
   <main>
     <section id="startseite" class="content active">
       <img src="1765905326463.jpg" alt="Startseite" />
-      <h1 style="color:#40E0D0;font-size: 25px;">Herzlich Willkommen</h1>
+      <h1><p style="color:#40E0D0;font-size: 25px;">Herzlich Willkommen</h1>
       <br />
       <a class="email-button" href="mailto:itsolutionsandfix@gmail.com">E-Mail senden</a>
       <a href="https://youtu.be/c3yf4ilVhms?si=sjQN7r67RlKFZHhp" target="_blank" class="Werbespot-button">Werbespot</a>
     </section>
 
     <section id="Bewertung" class="content">
-      <h2 style="color:#65FE08;text-align: center;">Ihre Bewertung abgeben ⭐</h2>
-      <input type="email" id="userEmail" placeholder="Deine E-Mail-Adresse" required />
-      <textarea id="mailInput" placeholder="Schreib hier deine Bewertung..." required></textarea>
-      <button id="mailSendBtn">☑️</button>
-      <p style="color:#FF10F0;text-align: center;">💡 Bitte beachten: Melden Sie sich zuerst bei Gmail oder GMX an.</p>
+      <div id="bewertung-section" class="bewertung-container">
+        <h2><p style="color:#65FE08;text-align: center;">Ihre Bewertung abgeben ⭐</h2>
+        <input type="email" id="userEmail" placeholder="Deine E-Mail-Adresse" required />
+        <textarea id="mailInput" placeholder="Schreib hier deine Bewertung..." required></textarea>
+        <button id="mailSendBtn">☑️</button>
+        <p style="color:#FF10F0;text-align: center;">💡bitte beachten:<br>
+        <p style="color:#FFC0CB.;text-align: center">Sie müssen sich zuerst im Web bei ihrer entsprechender <br>
+          email anmelden um eine Bewertung abzugeben: <a class="gmail" href="https://mail.google.com/mail/">gmail</a>
+          <a href="https://www.gmx.net/" target="_blank" class="gmx">gmx</a><br>
+          (lassen sie dan das entsprechende email tab offen und kehren sie zu diser Seite zurück)
+      </div>
+      <style>
+        #userEmail { width: 90%; height: 55px; font-size: 20px; padding: 10px; border-radius: 7px; border: 3px solid #ccc; }
+        #mailInput { width: 90%; height: 300px; font-size: 20px; padding: 10px; border-radius: 7px; border: 3px solid #ccc; resize: vertical; margin-bottom: 25px; }
+        #mailSendBtn { background-color: #ffd43b; color: gelb; font-weight: bold; padding: 10px 20px; border: none; border-radius: 6px; font-size: 20px; cursor: pointer; transition: background-color 0.3s ease; }
+        #mailSendBtn:hover { background-color: #e0b82f; }
+      </style>
+      <script>
+        (function(){
+          const btn = document.getElementById('mailSendBtn');
+          const input = document.getElementById('mailInput');
+          const emailField = document.getElementById('userEmail');
+          const targetEmail = 'itsolutionsandfix@gmail.com';
+          const subject = 'Neue Bewertung ⭐️';
+          btn.addEventListener('click', function() {
+            const text = input.value.trim();
+            const userEmail = emailField.value.trim();
+            if (!userEmail || !text) { alert('Bitte gib eine email an und bewerte uns.'); return; }
+            const encodedTo = encodeURIComponent(targetEmail);
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent('Bewertung von: ' + userEmail + '\n\n' + text);
+            window.open(`mailto:${targetEmail}?subject=${encodedSubject}&body=${encodedBody}`, '_blank');
+            input.value = '';
+          });
+        })();
+      </script>
     </section>
 
     <section id="Service-Angebote" class="content">
-      <h1 style="color:#65FE08;">Übersicht</h1>
-      <p style="font-size: 25px; color:#FFC0CB;">Kosten werden per Mail geschrieben.</p>
-      <p style="font-size: 22px;">Websiten Programmierung<br>Windows 11 Installation<br>PC Scan & Reparatur</p>
+      <h1 style="color:#65FE08;text-align: center;">Übersicht</h1>
+      <p style="font-size: 25px;"><p style="font-weight: bold;color:#FFC0CB;text-align: center;">Kosten werden per mail geschrieben<p><br></p> <br>
+      <p style="font-size: 25px;"><br /><br />Websiten Programmierung (Wir Erwecken ihre eigene Website)<br></p><br>
+      <p style="font-size: 25px;"><br /><br />Windows 11 Installation bei Geräten ohne Vervollständigung<br>der Mindestanforderungen</p><br><br>
+      <p style="font-size: 25px;"><br /><br />2-in-1 PC Scan mit Entfernung von beschädigter Dateien<br></p><br>
+      <p style="font-size: 25px;"><br /><br />Gaming Tastatur Reperatur der Leertaste + Dimmung<br></p><br>
+      <p style="font-size: 25px;"><br /><br />Komplette Computer Systeminspektion + Intigration<br></p><br>
+      <p style="font-size: 25px;"><br /><br />PC Zurücksetzung neuinstailation und Neuaufbau<br></p><br>
+      <p style="font-size: 25px;"><br /><br />Maustasten Reparatur<br></p><br>
+      <p style="color:#E6E6FA;text-align: center;">Natürlich wird sich auch um Aufträge gekümmert die nicht den genannten Aufträgen entsprechen❗<p><br></p> <br>
     </section>
-
+    
     <section id="Infos" class="content">
-      <h1 style="color:#65FE08;">Informationen</h1>
-      <p style="color:#FFE4E1; font-size: 22px;">Wir bieten Systeminstallationen, Software-Einrichtung und persönliche Unterstützung in ganz Deutschland.</p>
+      <h1 style="color:#65FE08;text-align: center;">Informationen</h1>
+      <p style="font-size: 25px;"><br /><br />Fehlerbehebung und gute Zusammenarbeit</p>
+      <p style="font-size: 25px;"><br />___________</p><br />
+      <p style="color:#FFE4E1;font-size: 25px;">
+        Doch die Tätigkeiten gehen weit darüber hinaus.<br />
+        Auch bei der Einrichtung neuer Geräte übernehmen wir Systeminstallationen,<br />
+        richten Software ein und machen alles dafür, dass ihr Computer optimal läuft. Also ob Neuaufbau,<br />
+        Erweiterung oder Optimierung – Wir stehen Ihnen mit<br />
+        persönlicher Unterstützung zur Verfügung.
+        <br><br>
+        <p style="color:#FF0000;font-size: 25px;">Deutschland<br>
+        IT Solutions & Fix<br>
+        itsolutionsandfix@gmail.com
+      </p>
     </section>
 
     <section id="Partner" class="content">
-      <h1 style="color:#65FE08;">Partnerschaft</h1>
-      <p style="font-size: 22px; color: #FFC0CB;">In Kooperation mit @Tbrasstracks.</p>
-      <a href="#" class="instagram-btn">Instagram</a>
-      <a href="#" class="youtube-btn">YouTube</a>
+      <h1 style="color:#65FE08;text-align: center;">Partnerschaft</h1>
+      <p style="font-size: 25px; color: #FFC0CB;">
+        In Arbeit mit dem YouTube & Instagram Kanal<br />
+        @Tbrasstracks bieten wir auch<br />
+        kreative Trompeten Videos<br />
+      </p>
+      <a href="https://www.instagram.com/tbrasstracks?igsh=MXd1MzI3d3Bka2pqYQ==" target="_blank" class="instagram-btn">Instagram</a>
+      <a href="https://youtube.com/@tbrasstracks?si=6t80yVRvs1cRSYDc" target="_blank" class="youtube-btn">YouTube</a>
+      <img src="1000025517.jpg" alt="Über uns Bild" class="ueber-uns-logo" />
     </section>
   </main>
 
   <script>
-    /* LOADER LOGIC */
+    /* ANIMATIONS LOGIC */
     window.addEventListener('load', () => {
       setTimeout(() => {
         const fw = document.querySelector('.fire-wind');
@@ -186,12 +330,17 @@
       }, 5500);
     });
 
-    /* NAVIGATION LOGIC */
     function showSection(id) {
       document.querySelectorAll('.content').forEach(el => el.classList.remove('active'));
       document.getElementById(id).classList.add('active');
+      document.querySelectorAll('nav a').forEach(el => el.classList.remove('active'));
+      document.getElementById('link-' + id).classList.add('active');
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      showSection('startseite');
+    });
   </script>
 </body>
-  </html>
-  
+                                                                                                                                                  </html>
+                                                                                                                                                  
