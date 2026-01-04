@@ -10,6 +10,83 @@
       font-family: Arial, sans-serif;
       background-color: linear-gradient(to right, #000000,#0000Ff);
     }
+    <div id="loader">
+  <div class="spinner"></div>
+  <div class="loader-text">IT Solutions & Fix</div>
+  <div class="fire-wind"></div>
+</div>
+
+<style>
+#loader {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 8px solid transparent;
+  border-top: 8px solid #0000FF;
+  border-bottom: 8px solid #ADD8E6;
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite, colorChange 3s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+@keyframes colorChange {
+  50% { border-top-color: #FF0000; border-bottom-color: #FFFF00; }
+}
+
+.loader-text {
+  position: absolute;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+  opacity: 0;
+  transform: scale(0.5);
+  animation: textAppear 3s forwards 2s;
+}
+
+@keyframes textAppear {
+  to { opacity: 1; transform: scale(1.2); }
+}
+
+.fire-wind {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(45deg, yellow, red, blue);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.burn-away {
+  animation: burn 2s forwards;
+}
+
+@keyframes burn {
+  0% { opacity: 0.8; clip-path: circle(0% at 50% 50%); }
+  100% { opacity: 0; clip-path: circle(150% at 50% 50%); }
+}
+</style>
+
+<script>
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const fw = document.querySelector('.fire-wind');
+    fw.classList.add('burn-away');
+    setTimeout(() => {
+      document.getElementById('loader').style.display = 'none';
+    }, 1500);
+  }, 5500);
+});
+</section>
     
     header {
       background: #00AAAA;
@@ -337,3 +414,4 @@ der Mindestanforderungen</p><br><br>
   </script>
 </body>
   </html>
+
